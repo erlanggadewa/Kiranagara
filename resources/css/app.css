@@ -1,0 +1,40 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+[x-cloak] {
+  display: none !important;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #edf2f7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 100vh;
+  border: 3px solid #edf2f7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+@layer components {
+  .resume-dashboard {
+    @apply flex items-center gap-4 px-3 py-2 rounded-lg shadow-md lg:gap-5 bg-tertiary lg:px-4 lg:py-3;
+  }
+}
+
+nav {
+  height: calc(100vh - 120px);
+}

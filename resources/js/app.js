@@ -1,7 +1,4 @@
 require("./bootstrap");
+require("./alpine");
+
 require("./chartDashboard");
-import Alpine from "alpinejs";
-
-window.Alpine = Alpine;
-
-Alpine.start();

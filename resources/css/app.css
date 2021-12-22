@@ -5,6 +5,7 @@
 [x-cloak] {
   display: none !important;
 }
+
 /* width */
 ::-webkit-scrollbar {
   width: 16px;
@@ -33,8 +34,14 @@
   .resume-dashboard {
     @apply flex items-center gap-4 px-3 py-2 rounded-lg shadow-md lg:gap-5 bg-tertiary lg:px-4 lg:py-3;
   }
+  .nav-wrapper {
+    @apply flex justify-center w-full ml-6 hover:bg-white cursor-pointer duration-200 rounded-l-full h-[60px] items-center;
+  }
+  .nav-icon {
+    @apply w-8 -ml-6 fill-current text-primary;
+  }
 }
 
-nav {
+#nav {
   height: calc(100vh - 120px);
 }

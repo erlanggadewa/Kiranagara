@@ -16,20 +16,12 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="font-sans antialiased">
-  @include('layouts.header')
-  <div class="flex">
-
-    @include('layouts.navigation-admin')
-    <!-- Page Content -->
-    <main class="w-11/12">
-      {{ $slot }}
-    </main>
-  </div>
-  @include('layouts.footer')
+<body class="font-sans antialiased text-gray-900 ">
+  {{ $slot }}
 </body>
 
 </html>

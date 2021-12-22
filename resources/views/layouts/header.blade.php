@@ -1,5 +1,4 @@
-<header
-  class="sticky top-0 flex items-center justify-between w-full h-20 px-3 md:justify-between md:gap-5 bg-secondary md:px-10">
+<header class="flex items-center justify-between w-full h-20 px-3 md:justify-between md:gap-5 bg-secondary md:px-10">
   <div class="flex items-center md:justify-start grow md:gap-5">
     <svg class="hidden w-12 md:block" viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">

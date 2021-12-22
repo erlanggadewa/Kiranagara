@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
+  Route::get('/', function () {
+    return view('index-user');
+  })->name('index-user');
+});
 
-Route::get('/', function () {
-  return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth', 'check.role:admin'])->group(function () {
+  Route::get('/dashboard', function () {
+    return view('dashboard');
+  })->name('dashboard');
+});
+
 
 require __DIR__ . '/auth.php';

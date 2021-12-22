@@ -1,59 +1,33 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+  <div x-cloak x-data="{openRegister : false}" class="gap-3 md:flex ">
+    <div :class="!openRegister ? 'block' : 'hidden'"
+      class="relative flex-col justify-between px-5 py-10 overflow-x-hidden md:flex md:px-14 md:py-14 md:w-3/5 ">
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+      <div class="flex items-center gap-4 flex-nowrap ">
+        <img src="{{ asset('img/logoKiranagara.png') }}" alt="logo" class="w-12">
+        <img src="{{ asset('img/KIRANAGARA.png') }}" alt="kiranagara" class="h-6">
+      </div>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+      <div id="img-person" class="mt-14 ">
+        <img class="lg:w-4/5 xl:w-3/4" src="{{ asset('img/personRegister.png') }}" alt="person">
+      </div>
+      <p class="font-medium text-center my-14 md:my-0 md:mt-10">
+        Kiranagara merupakan sebuah platform belajar online gratis yang membahas mengenai kebudayaan yang ada di
+        Indonesia.
+        Kirana berasal dari bahasa sastra Indonesia yang berarti cantik dan Nagara berarti Negara.
+      </p>
+      <div class="md:hidden" x-on:click="openRegister = true">
+        <x-button type="submit">
+          NEXT
+        </x-button>
+      </div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+      <img src="{{ asset('img/pattern1.png') }}" alt="" class="absolute bottom-0 left-0 w-1/2 md:w-1/3"
+        style="z-index: -999">
+    </div>
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+    <x-tasks.register-form ::class="openRegister ? 'block' : 'hidden'"></x-tasks.register-form>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+  </div>
 </x-guest-layout>

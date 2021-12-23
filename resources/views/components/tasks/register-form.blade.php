@@ -14,12 +14,12 @@
   <hr class="w-1/2 mt-4 bg-green-800 border-2 border-green-800 mb-7">
   <h2 class="mb-3 text-lg font-medium ">Pilih Posisi Kamu</h2>
 
-  <div x-cloak x-data>
+  <div x-cloak x-data="adminAuth">
     <div class="grid grid-cols-2 gap-3">
       {{-- User SVG --}}
-      <div x-on:click="$store.userAuth = true" :class="true ? 'border-green-800' : 'border-gray-400'"
+      <div x-on:click="onVal = false" :class="!onVal ? 'border-green-800' : 'border-gray-400'"
         class="flex flex-col items-center justify-center gap-3 py-8 border-2 cursor-pointer group rounded-2xl wrapper">
-        <svg :class="$store.userAuth ? 'text-green-800' : 'text-gray-400'"
+        <svg :class="!onVal ? 'text-green-800' : 'text-gray-400'"
           class="w-12 h-12 duration-200 fill-current group-hover:scale-110" xmlns="http://www.w3.org/2000/svg"
           version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" width="512"
           height="512" x="0" y="0" viewBox="0 0 511.973 511.973" style="enable-background:new 0 0 512 512"
@@ -35,14 +35,14 @@
             </g>
           </g>
         </svg>
-        <h2 :class="$store.userAuth ? 'text-green-800' : 'text-gray-400'"
+        <h2 :class="!onVal ? 'text-green-800' : 'text-gray-400'"
           class="font-semibold duration-200 group-hover:scale-110 ">Pengguna
         </h2>
       </div>
       {{-- Admin SVG --}}
-      <div x-on:click="$store.userAuth = false" :class="!$store.userAuth ? 'border-green-800' : 'border-gray-400'"
+      <div x-on:click="onVal = true" :class="onVal ? 'border-green-800' : 'border-gray-400'"
         class="flex flex-col items-center justify-center gap-3 py-8 border-2 cursor-pointer group rounded-2xl wrapper">
-        <svg :class="!$store.userAuth ? 'text-green-800' : 'text-gray-400'"
+        <svg :class="onVal ? 'text-green-800' : 'text-gray-400'"
           class="w-12 h-12 duration-200 fill-current group-hover:scale-110 " xmlns="http://www.w3.org/2000/svg"
           version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
           viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
@@ -63,7 +63,7 @@
             </g>
           </g>
         </svg>
-        <h2 :class="!$store.userAuth ? 'text-green-800' : 'text-gray-400'"
+        <h2 :class="onVal ? 'text-green-800' : 'text-gray-400'"
           class="font-semibold duration-200 group-hover:scale-110 ">Admin</h2>
       </div>
     </div>
@@ -90,11 +90,11 @@
 
     <x-auth-validation-error title="Failed to Register"></x-auth-validation-error>
 
-    <template x-if="$store.userAuth">
+    <template x-if="!onVal">
       <x-tasks.user-register-form></x-tasks.user-register-form>
     </template>
 
-    <template x-if="!$store.userAuth">
+    <template x-if="onVal">
       <x-tasks.admin-register-form></x-tasks.admin-register-form>
     </template>
 

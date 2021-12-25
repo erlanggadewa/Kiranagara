@@ -46,12 +46,12 @@
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
                     <div class="text-sm font-medium text-gray-900">
-                      Jane Cooper
+                      Rumah Joglo - Jawa Tengah
                     </div>
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">Regional Paradigm Technician</div>
+                  <div class="text-sm text-gray-900">Rumah Adat</div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-md">

@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
     Auth::login($user);
 
     if ($request->role == 'admin') {
-      return redirect()->route('dashboard');
+      return redirect()->route('dashboard-admin');
     }
     return redirect(RouteServiceProvider::HOME);
   }

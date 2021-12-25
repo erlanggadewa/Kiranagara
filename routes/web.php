@@ -18,10 +18,8 @@ use App\Http\Controllers\CulturalCategoryController;
 
 Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
   Route::get('/', function () {
-    return view('user.index-user');
-  })->name('index-user');
-
-  Route::post('/crop', [UploadController::class, 'crop'])->name('crop');
+    return view('user.dashboard');
+  })->name('dashboard-user');
 });
 
 Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function () {
@@ -29,6 +27,7 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function
     return view('admin.dashboard');
   })->name('dashboard-admin');
 
+  Route::post('/crop', [CulturalCategoryController::class, 'crop'])->name('crop');
   Route::resource('budaya', CulturalCategoryController::class);
 });
 

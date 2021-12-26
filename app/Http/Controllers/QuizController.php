@@ -18,7 +18,6 @@ class QuizController extends Controller
    */
   public function index()
   {
-    return view('admin.kuis');
   }
 
   /**
@@ -28,7 +27,7 @@ class QuizController extends Controller
    */
   public function create()
   {
-    //
+    return view('admin.kuis');
   }
 
   /**
@@ -50,7 +49,7 @@ class QuizController extends Controller
       'img' =>  ['required', 'string', 'max:255'],
     ]);
     Quiz::create($quiz);
-    return redirect()->route('kuis-admin.index')->withToastSuccess('Data Berhasil Ditambah!');
+    return redirect()->back()->withToastSuccess('Data Berhasil Ditambah!');
   }
 
   /**

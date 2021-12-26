@@ -6,7 +6,7 @@
 
   <x-auth-validation-error title="Gagal Menambahkan Data"></x-auth-validation-error>
 
-  <form action="{{ route('kuis-admin.store') }}" method="post">
+  <form action="{{ route('kuis-admin.store') }}" method="post" enctype="multipart/form">
     @csrf
     <input id="img-name-kuis" type="hidden" value="no-img.png" name="img">
 
@@ -73,8 +73,9 @@
           <div class="block h-full font-semibold text-gray-600 select-none ">
             <label for="question" class="inline-block mb-2 font-bold">Soal</label>
             <div class="w-full h-full">
-              <input id="question" type="hidden" name="question">
-              <trix-editor id="question" class="" input="question"></trix-editor>
+              <input id="question" type="hidden" name="question" value="{{ old('question') }}">
+              <trix-editor id="question" class="" input="question">
+              </trix-editor>
             </div>
           </div>
         </div>
@@ -137,7 +138,7 @@
           $('#img-name-kuis').val(name);
         },
         onError: function(message, element, status) {
-          alert(message, 'failed');
+          alert(message, 'error');
         },
       })
     });

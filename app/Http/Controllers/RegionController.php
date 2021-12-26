@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CulturalData;
+use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use App\Http\Requests\StoreCulturalDataRequest;
-use App\Http\Requests\UpdateCulturalDataRequest;
+use App\Http\Requests\StoreRegionRequest;
+use App\Http\Requests\UpdateRegionRequest;
 
-class CulturalDataController extends Controller
+class RegionController extends Controller
 {
-
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  public function index()
+  {
+  }
 
   /**
    * Show the form for creating a new resource.
@@ -19,35 +26,38 @@ class CulturalDataController extends Controller
    */
   public function create()
   {
-    //
+    return view('admin.daerah');
   }
 
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \App\Http\Requests\StoreCulturalDataRequest  $request
+   * @param  \App\Http\Requests\StoreRegionRequest  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(StoreCulturalDataRequest $request)
+  public function store(StoreRegionRequest $request)
   {
-    $culturalData = $request->validate([
+    $region = $request->validate([
       'name' => ['required', 'string', 'max:255'],
-      'cultural_category_id' => ['required', 'integer', 'max:255'],
+      'latitude' => ['required', 'string'],
+      'longitude' => ['required', 'string'],
+      'size_area' => ['required', 'integer', 'min:0'],
+      'population' => ['required', 'integer', 'min:0'],
+      'description' => ['required'],
       'img' =>  ['required', 'string', 'max:255'],
-      'description' =>  ['required', 'string']
     ]);
 
-    CulturalData::create($culturalData);
+    Region::create($region);
     return redirect()->back()->withToastSuccess('Data Berhasil Ditambah!');
   }
 
   /**
    * Display the specified resource.
    *
-   * @param  \App\Models\CulturalData  $culturalData
+   * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function show(CulturalData $culturalData)
+  public function show(Region $region)
   {
     //
   }
@@ -55,10 +65,10 @@ class CulturalDataController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\Models\CulturalData  $culturalData
+   * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function edit(CulturalData $culturalData)
+  public function edit(Region $region)
   {
     //
   }
@@ -66,11 +76,11 @@ class CulturalDataController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \App\Http\Requests\UpdateCulturalDataRequest  $request
-   * @param  \App\Models\CulturalData  $culturalData
+   * @param  \App\Http\Requests\UpdateRegionRequest  $request
+   * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function update(UpdateCulturalDataRequest $request, CulturalData $culturalData)
+  public function update(UpdateRegionRequest $request, Region $region)
   {
     //
   }
@@ -78,10 +88,10 @@ class CulturalDataController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\Models\CulturalData  $culturalData
+   * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function destroy(CulturalData $culturalData)
+  public function destroy(Region $region)
   {
     //
   }
@@ -89,8 +99,8 @@ class CulturalDataController extends Controller
   function crop(Request $request)
   {
 
-    $path = 'img/budaya/data/';
-    $file = $request->file('img');
+    $path = 'img/daerah/';
+    $file = $request->file('img-file');
     $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
     $upload = $file->move(public_path($path), $new_image_name);
     if ($upload) {

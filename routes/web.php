@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
-use App\Http\Controllers\UploadController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CulturalDataController;
 use App\Http\Controllers\CulturalCategoryController;
 
@@ -41,6 +41,9 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function
 
   Route::post('/crop-kuis', [QuizController::class, 'crop'])->name('crop-kuis');
   Route::resource('kuis-admin', QuizController::class);
+
+  Route::post('/crop-daerah', [RegionController::class, 'crop'])->name('crop-daerah');
+  Route::resource('daerah-admin', RegionController::class);
 });
 
 

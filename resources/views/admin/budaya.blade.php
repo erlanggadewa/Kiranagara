@@ -56,7 +56,7 @@
 
     {{-- Data Budaya --}}
     <div class="px-6 py-4 border rounded-lg shadow-lg xl:col-span-3 bg-tertiary border-secondary">
-      <form method="POST" enctype="multipart/form-data" action="{{ route('data-budaya.store') }}">
+      <form method="POST" action="{{ route('data-budaya.store') }}">
         @csrf
         <input type="hidden" value="data-budaya" name="template">
         <input id="img-name-budaya" type="hidden" value="no-img.png" name="img">
@@ -126,7 +126,7 @@
             <div class="block h-full pb-16 font-semibold text-gray-600 select-none">
               <label for="description" class="inline-block mb-2">Deskripsi</label>
               <div class="w-full h-full">
-                <input id="description" type="hidden" name="description">
+                <input id="description" type="hidden" name="description" value="{{ old('description') }}">
                 <trix-editor id="description" class="h-full" input="description"></trix-editor>
               </div>
             </div>
@@ -160,7 +160,7 @@
           $('#img-name-kategori').val(name);
         },
         onError: function(message, element, status) {
-          alert(message, 'failed');
+          alert(message, 'error');
         },
       })
 
@@ -177,7 +177,7 @@
           $('#img-name-budaya').val(name);
         },
         onError: function(message, element, status) {
-          alert(message, 'failed');
+          alert(message, 'error');
         },
       })
     });

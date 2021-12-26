@@ -14,6 +14,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('css/ijaboCropTool.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/trix.css') }}">
 
 
   <!-- Scripts -->
@@ -24,11 +25,14 @@
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="{{ asset('js/ijaboCropTool.min.js') }}"></script>
-
+  <script src="{{ asset('js/trix.js') }}" type="text/javascript"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body class="font-sans antialiased text-gray-900 ">
+  @include('sweetalert::alert')
+
   {{ $slot }}
 
 </body>

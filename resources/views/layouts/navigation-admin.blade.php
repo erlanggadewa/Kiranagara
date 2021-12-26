@@ -56,7 +56,7 @@
       </div>
     </a>
     {{-- budaya --}}
-    <a class="w-full" href="{{ route('budaya.index') }}">
+    <a class="w-full" href="{{ route('budaya-admin') }}">
       <div class=" group nav-wrapper">
         <svg class="nav-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_496_2)">
@@ -93,9 +93,10 @@
     </a>
     {{-- daerah --}}
     <div class="group nav-wrapper">
-      <svg class=" nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 511.99995 511"
-        style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+      <svg class=" nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
+        viewBox="0 0 511.99995 511" style="enable-background:new 0 0 512 512" xml:space="preserve"
+        class="">
         <g>
           <path xmlns="http://www.w3.org/2000/svg"
             d="m128.378906 272.066406h-22.960937c-6.023438 0-11.460938 3.585938-13.84375 9.109375l-63.5625 148.003907 150.953125-77.097657c-18.070313-25.003906-35.949219-52.582031-50.585938-80.015625zm0 0"
@@ -121,32 +122,34 @@
       <span class="hidden mt-1 ml-5 text-lg font-semibold text-primary group-hover:block">Daerah</span>
     </div>
     {{-- kuis --}}
-    <div class="group nav-wrapper">
-      <svg class=" nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-        xml:space="preserve" class="">
-        <g>
-          <path xmlns="http://www.w3.org/2000/svg"
-            d="m310.174 73.25c7.018-6.283 16.4-9.979 26.651-9.573 19.511.772 35.393 16.681 36.13 36.194.812 21.479-16.36 39.147-37.658 39.147-9.654 0-18.456-3.634-25.124-9.603v72.412h72.412c-6.283 7.018-9.979 16.4-9.573 26.651.772 19.511 16.681 35.393 36.194 36.13 21.479.812 39.146-16.36 39.146-37.658 0-9.654-3.634-18.456-9.604-25.124h73.25v-176.702c.002-13.876-11.247-25.124-25.122-25.124h-176.702z"
-            fill="#0e4542" class=""></path>
-          <path xmlns="http://www.w3.org/2000/svg"
-            d="m264.665 336.825c-.405-10.251 3.291-19.633 9.573-26.651h-72.412v72.412c-7.018-6.283-16.4-9.979-26.651-9.573-19.511.772-35.393 16.681-36.13 36.194-.812 21.479 16.36 39.146 37.658 39.146 9.654 0 18.456-3.634 25.124-9.603v73.25h176.702c13.875 0 25.124-11.248 25.124-25.124v-176.702h-73.25c5.969 6.668 9.603 15.47 9.603 25.124 0 21.298-17.668 38.469-39.146 37.658-19.514-.738-35.424-16.619-36.195-36.131z"
-            fill="#0e4542" class=""></path>
-          <path xmlns="http://www.w3.org/2000/svg"
-            d="m226.949 171.995c-9.654 0-18.456 3.634-25.124 9.604v-73.25h-176.701c-13.876 0-25.124 11.248-25.124 25.123v146.702h33.82c2.448-34.082 30.559-61.461 64.917-62.759.869-.033 1.732-.049 2.595-.049 35.682 0 65.003 27.754 67.511 62.808h32.983v-42.412c7.018 6.283 16.4 9.979 26.651 9.573 19.511-.772 35.393-16.681 36.13-36.194.812-21.478-16.36-39.146-37.658-39.146z"
-            fill="#0e4542" class=""></path>
-          <path xmlns="http://www.w3.org/2000/svg"
-            d="m127.942 457.612c-12.875-13.371-19.579-30.965-18.876-49.539 1.298-34.357 28.678-62.468 62.76-64.916v-32.983h-42.413c5.969-6.668 9.604-15.47 9.604-25.124 0-21.298-17.668-38.469-39.146-37.658-19.513.738-35.422 16.619-36.194 36.13-.405 10.251 3.291 19.633 9.573 26.651h-73.25v176.702c0 13.877 11.248 25.125 25.124 25.125h146.703v-33.825c-16.549-1.213-32.324-8.556-43.885-20.563z"
-            fill="#0e4542" class=""></path>
-        </g>
-      </svg>
-      <span class="hidden mt-1 ml-5 text-lg font-semibold text-primary group-hover:block">Kuis</span>
-    </div>
+    <a class="w-full" href="{{ route('kuis-admin.index') }}">
+      <div class="group nav-wrapper">
+        <svg class=" nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
+          xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
+          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+          <g>
+            <path xmlns="http://www.w3.org/2000/svg"
+              d="m310.174 73.25c7.018-6.283 16.4-9.979 26.651-9.573 19.511.772 35.393 16.681 36.13 36.194.812 21.479-16.36 39.147-37.658 39.147-9.654 0-18.456-3.634-25.124-9.603v72.412h72.412c-6.283 7.018-9.979 16.4-9.573 26.651.772 19.511 16.681 35.393 36.194 36.13 21.479.812 39.146-16.36 39.146-37.658 0-9.654-3.634-18.456-9.604-25.124h73.25v-176.702c.002-13.876-11.247-25.124-25.122-25.124h-176.702z"
+              fill="#0e4542" class=""></path>
+            <path xmlns="http://www.w3.org/2000/svg"
+              d="m264.665 336.825c-.405-10.251 3.291-19.633 9.573-26.651h-72.412v72.412c-7.018-6.283-16.4-9.979-26.651-9.573-19.511.772-35.393 16.681-36.13 36.194-.812 21.479 16.36 39.146 37.658 39.146 9.654 0 18.456-3.634 25.124-9.603v73.25h176.702c13.875 0 25.124-11.248 25.124-25.124v-176.702h-73.25c5.969 6.668 9.603 15.47 9.603 25.124 0 21.298-17.668 38.469-39.146 37.658-19.514-.738-35.424-16.619-36.195-36.131z"
+              fill="#0e4542" class=""></path>
+            <path xmlns="http://www.w3.org/2000/svg"
+              d="m226.949 171.995c-9.654 0-18.456 3.634-25.124 9.604v-73.25h-176.701c-13.876 0-25.124 11.248-25.124 25.123v146.702h33.82c2.448-34.082 30.559-61.461 64.917-62.759.869-.033 1.732-.049 2.595-.049 35.682 0 65.003 27.754 67.511 62.808h32.983v-42.412c7.018 6.283 16.4 9.979 26.651 9.573 19.511-.772 35.393-16.681 36.13-36.194.812-21.478-16.36-39.146-37.658-39.146z"
+              fill="#0e4542" class=""></path>
+            <path xmlns="http://www.w3.org/2000/svg"
+              d="m127.942 457.612c-12.875-13.371-19.579-30.965-18.876-49.539 1.298-34.357 28.678-62.468 62.76-64.916v-32.983h-42.413c5.969-6.668 9.604-15.47 9.604-25.124 0-21.298-17.668-38.469-39.146-37.658-19.513.738-35.422 16.619-36.194 36.13-.405 10.251 3.291 19.633 9.573 26.651h-73.25v176.702c0 13.877 11.248 25.125 25.124 25.125h146.703v-33.825c-16.549-1.213-32.324-8.556-43.885-20.563z"
+              fill="#0e4542" class=""></path>
+          </g>
+        </svg>
+        <span class="hidden mt-1 ml-5 text-lg font-semibold text-primary group-hover:block">Kuis</span>
+      </div>
+    </a>
     {{-- setting --}}
     <div class="group nav-wrapper">
-      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-        xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-        xml:space="preserve" class="">
+      <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
+        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
+        viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
         <g>
           <g xmlns="http://www.w3.org/2000/svg">
             <g>

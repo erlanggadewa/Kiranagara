@@ -5,13 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CulturalCategory extends Model
+class Quiz extends Model
 {
   use HasFactory;
   public $guarded = ['id'];
-
-  public function culturalData()
-  {
-    return $this->belongsTo(CulturalData::class);
-  }
 }

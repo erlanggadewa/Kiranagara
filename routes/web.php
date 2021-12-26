@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\CulturalDataController;
 use App\Http\Controllers\CulturalCategoryController;
 
 /*
@@ -27,8 +29,18 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function
     return view('admin.dashboard');
   })->name('dashboard-admin');
 
-  Route::post('/crop', [CulturalCategoryController::class, 'crop'])->name('crop');
-  Route::resource('budaya', CulturalCategoryController::class);
+  Route::get('/budaya', function () {
+    return view('admin.budaya');
+  })->name('budaya-admin');
+
+  Route::post('/crop-kategori-budaya', [CulturalCategoryController::class, 'crop'])->name('crop-kategori-budaya');
+  Route::resource('kategori-budaya', CulturalCategoryController::class);
+
+  Route::post('/crop-data-budaya', [CulturalDataController::class, 'crop'])->name('crop-data-budaya');
+  Route::resource('data-budaya', CulturalDataController::class);
+
+  Route::post('/crop-kuis', [QuizController::class, 'crop'])->name('crop-kuis');
+  Route::resource('kuis-admin', QuizController::class);
 });
 
 

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CulturalData;
 use Illuminate\Http\Request;
-use App\Models\CulturalCategory;
-use App\Http\Requests\StoreCulturalCategoryRequest;
-use App\Http\Requests\UpdateCulturalCategoryRequest;
+use Illuminate\Routing\Controller;
+use App\Http\Requests\StoreCulturalDataRequest;
+use App\Http\Requests\UpdateCulturalDataRequest;
 
-class CulturalCategoryController extends Controller
+class CulturalDataController extends Controller
 {
 
 
@@ -18,33 +19,35 @@ class CulturalCategoryController extends Controller
    */
   public function create()
   {
+    //
   }
 
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \App\Http\Requests\StoreCulturalCategoryRequest  $request
+   * @param  \App\Http\Requests\StoreCulturalDataRequest  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(StoreCulturalCategoryRequest $request)
+  public function store(StoreCulturalDataRequest $request)
   {
-    dd($request);
-    $culturalCategory = $request->validate([
+    $culturalData = $request->validate([
       'name' => ['required', 'string', 'max:255'],
-      'img' =>  ['required', 'string', 'max:255']
+      'cultural_category_id' => ['required', 'integer', 'max:255'],
+      'img' =>  ['required', 'string', 'max:255'],
+      'description' =>  ['required', 'string']
     ]);
 
-    CulturalCategory::create($culturalCategory);
+    CulturalData::create($culturalData);
     return redirect()->route('budaya-admin')->withToastSuccess('Data Berhasil Ditambah!');
   }
 
   /**
    * Display the specified resource.
    *
-   * @param  \App\Models\CulturalCategory  $culturalCategory
+   * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function show(CulturalCategory $culturalCategory)
+  public function show(CulturalData $culturalData)
   {
     //
   }
@@ -52,10 +55,10 @@ class CulturalCategoryController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  \App\Models\CulturalCategory  $culturalCategory
+   * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function edit(CulturalCategory $culturalCategory)
+  public function edit(CulturalData $culturalData)
   {
     //
   }
@@ -63,11 +66,11 @@ class CulturalCategoryController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \App\Http\Requests\UpdateCulturalCategoryRequest  $request
-   * @param  \App\Models\CulturalCategory  $culturalCategory
+   * @param  \App\Http\Requests\UpdateCulturalDataRequest  $request
+   * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function update(UpdateCulturalCategoryRequest $request, CulturalCategory $culturalCategory)
+  public function update(UpdateCulturalDataRequest $request, CulturalData $culturalData)
   {
     //
   }
@@ -75,17 +78,18 @@ class CulturalCategoryController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\Models\CulturalCategory  $culturalCategory
+   * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function destroy(CulturalCategory $culturalCategory)
+  public function destroy(CulturalData $culturalData)
   {
     //
   }
+
   function crop(Request $request)
   {
 
-    $path = 'img/budaya/kategori/';
+    $path = 'img/budaya/data/';
     $file = $request->file('img');
     $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
     $upload = $file->move(public_path($path), $new_image_name);

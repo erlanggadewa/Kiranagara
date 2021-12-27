@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\CulturalData;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CulturalDataController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\CulturalCategoryController;
 
 /*
@@ -19,19 +21,17 @@ use App\Http\Controllers\CulturalCategoryController;
 
 
 Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
-  Route::get('/', function () {
-    return view('user.dashboard');
-  })->name('dashboard-user');
+  Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
+  Route::get('/budaya/{id}', [CulturalDataController::class, 'index'])->name('budaya-user');
 });
 
 Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function () {
+
   Route::get('/dashboard', function () {
     return view('admin.dashboard');
   })->name('dashboard-admin');
 
-  Route::get('/budaya', function () {
-    return view('admin.budaya');
-  })->name('budaya-admin');
+  Route::get('/budaya', [CulturalDataController::class, 'create'])->name('budaya-admin');
 
   Route::post('/crop-kategori-budaya', [CulturalCategoryController::class, 'crop'])->name('crop-kategori-budaya');
   Route::resource('kategori-budaya', CulturalCategoryController::class);

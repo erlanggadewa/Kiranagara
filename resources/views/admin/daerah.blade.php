@@ -36,11 +36,11 @@
             </div>
           </div>
 
-          <div class="block h-full mt-6 font-semibold text-gray-600 select-none">
+          <div class="block h-full mt-6 font-semibold text-gray-600 select-none ">
             <label for="description" class="inline-block mb-2">Deskripsi</label>
             <div class="w-full">
               <input id="description" type="hidden" name="description" value="{{ old('description') }}">
-              <trix-editor id="description" input="description"></trix-editor>
+              <trix-editor id="description" input="description" class="w-full"></trix-editor>
             </div>
           </div>
         </div>

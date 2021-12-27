@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CulturalData;
 use Illuminate\Http\Request;
+use App\Models\CulturalCategory;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreCulturalDataRequest;
 use App\Http\Requests\UpdateCulturalDataRequest;
@@ -11,6 +12,11 @@ use App\Http\Requests\UpdateCulturalDataRequest;
 class CulturalDataController extends Controller
 {
 
+  function index($id)
+  {
+    $culturalData = CulturalData::where('cultural_category_id', '=', $id)->latest()->get();
+    return view('user.budaya', ['culturalData' => $culturalData]);
+  }
 
   /**
    * Show the form for creating a new resource.
@@ -19,7 +25,7 @@ class CulturalDataController extends Controller
    */
   public function create()
   {
-    //
+    return view('admin.budaya', ["culturalCategories" => CulturalCategory::all()]);
   }
 
   /**
@@ -31,7 +37,7 @@ class CulturalDataController extends Controller
   public function store(StoreCulturalDataRequest $request)
   {
     $culturalData = $request->validate([
-      'name' => ['required', 'string', 'max:255'],
+      'name' => ['required', 'string', 'max:255', 'unique:cultural_data'],
       'cultural_category_id' => ['required', 'integer', 'max:255'],
       'img' =>  ['required', 'string', 'max:255'],
       'description' =>  ['required', 'string']
@@ -90,7 +96,7 @@ class CulturalDataController extends Controller
   {
 
     $path = 'img/budaya/data/';
-    $file = $request->file('img');
+    $file = $request->file('img-file');
     $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
     $upload = $file->move(public_path($path), $new_image_name);
     if ($upload) {

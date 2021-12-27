@@ -28,9 +28,8 @@ class CulturalCategoryController extends Controller
    */
   public function store(StoreCulturalCategoryRequest $request)
   {
-    dd($request);
     $culturalCategory = $request->validate([
-      'name' => ['required', 'string', 'max:255'],
+      'name' => ['required', 'string', 'max:255', 'unique:cultural_categories'],
       'img' =>  ['required', 'string', 'max:255']
     ]);
 
@@ -86,7 +85,7 @@ class CulturalCategoryController extends Controller
   {
 
     $path = 'img/budaya/kategori/';
-    $file = $request->file('img');
+    $file = $request->file('img-file');
     $new_image_name = 'UIMG' . date('Ymd') . uniqid() . '.jpg';
     $upload = $file->move(public_path($path), $new_image_name);
     if ($upload) {

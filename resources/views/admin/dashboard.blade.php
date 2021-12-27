@@ -10,28 +10,28 @@
         <div class="w-5 h-5 bg-red-400 rounded-full lg:w-7 lg:h-7 blur-sm"></div>
         <div>
           <h1 class="text-xs lg:text-base">Kategori Budaya</h1>
-          <h2 class="text-sm font-bold lg:text-base">{{ "8 Kategori" }}</h2>
+          <h2 class="text-sm font-bold lg:text-base">{{ '8 Kategori' }}</h2>
         </div>
       </div>
       <div class="resume-dashboard ">
         <div class="w-5 h-5 bg-yellow-400 rounded-full lg:w-7 lg:h-7 blur-sm"></div>
         <div>
           <h1 class="text-xs lg:text-base">Konten Daerah</h1>
-          <h2 class="text-sm font-bold lg:text-base">{{ "8 Daerah" }}</h2>
+          <h2 class="text-sm font-bold lg:text-base">{{ '8 Daerah' }}</h2>
         </div>
       </div>
       <div class="resume-dashboard">
         <div class="w-5 h-5 bg-green-400 rounded-full lg:w-7 lg:h-7 blur-sm"></div>
         <div>
           <h1 class="text-xs lg:text-base">Soal Kuis</h1>
-          <h2 class="text-sm font-bold lg:text-base">{{ "40 Soal" }}</h2>
+          <h2 class="text-sm font-bold lg:text-base">{{ '40 Soal' }}</h2>
         </div>
       </div>
       <div class="resume-dashboard">
         <div class="w-5 h-5 bg-blue-400 rounded-full lg:w-7 lg:h-7 blur-sm"></div>
         <div>
           <h1 class="text-xs lg:text-base">Konten Budaya</h1>
-          <h2 class="text-sm font-bold lg:text-base">{{ "18 Konten" }}</h2>
+          <h2 class="text-sm font-bold lg:text-base">{{ '18 Konten' }}</h2>
         </div>
       </div>
 
@@ -44,8 +44,8 @@
       </div>
     </div>
 
-    <x-content-budaya></x-content-budaya>
-    <x-content-daerah></x-content-daerah>
+    <x-management-budaya></x-management-budaya>
+    <x-management-daerah></x-management-daerah>
 
 
 

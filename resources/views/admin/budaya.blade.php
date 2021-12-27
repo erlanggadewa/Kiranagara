@@ -75,7 +75,9 @@
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary"
                     name="cultural_category_id" id="category">
                     <option value="" selected="selected" hidden="hidden">Choose one</option>
-                    <option value="1">Makanan Khas</option>
+                    @foreach ($culturalCategories as $culturalCategory)
+                      <option value="{{ $culturalCategory->id }}">{{ $culturalCategory->name }}</option>
+                    @endforeach
 
                   </select>
                 </label>
@@ -149,7 +151,7 @@
 
       $("#img-kategori-budaya").ijaboCropTool({
         preview: "#preview-img-kategori",
-        setRatio: 1,
+        setRatio: 3 / 2,
         allowedExtensions: ["jpg", "jpeg", "png"],
         buttonsText: ["CROP", "QUIT"],
         buttonsColor: ["#0E4542", "#e60033", -15],

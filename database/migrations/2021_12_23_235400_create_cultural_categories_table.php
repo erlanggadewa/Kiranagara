@@ -15,7 +15,7 @@ class CreateCulturalCategoriesTable extends Migration
   {
     Schema::create('cultural_categories', function (Blueprint $table) {
       $table->id();
-      $table->string('name');
+      $table->string('name')->unique();
       $table->string('img');
       $table->timestamps();
     });

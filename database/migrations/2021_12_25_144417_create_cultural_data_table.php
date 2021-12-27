@@ -16,7 +16,7 @@ class CreateCulturalDataTable extends Migration
     Schema::create('cultural_data', function (Blueprint $table) {
       $table->id();
       $table->foreignId('cultural_category_id');
-      $table->string('name');
+      $table->string('name')->unique();
       $table->string('img');
       $table->text('description');
       $table->timestamps();

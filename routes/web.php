@@ -6,6 +6,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CulturalDataController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\CulturalCategoryController;
 
 /*
@@ -22,14 +23,15 @@ use App\Http\Controllers\CulturalCategoryController;
 
 Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
+
   Route::get('/budaya/{id}', [CulturalDataController::class, 'index'])->name('budaya-user');
+
+  Route::get('/daerah/{region}', [RegionController::class, 'index'])->name('daerah-user');
 });
 
 Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function () {
 
-  Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-  })->name('dashboard-admin');
+  Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
 
   Route::get('/budaya', [CulturalDataController::class, 'create'])->name('budaya-admin');
 

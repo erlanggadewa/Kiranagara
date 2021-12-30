@@ -15,8 +15,10 @@ class RegionController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Region $region)
   {
+    // $culturalData = Region::where('cultural_category_id', '=', $id)->latest()->get();
+    return view('user.daerah', ['region' => $region]);
   }
 
   /**

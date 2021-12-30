@@ -45,7 +45,6 @@ class CulturalCategoryController extends Controller
    */
   public function show(CulturalCategory $culturalCategory)
   {
-    //
   }
 
   /**

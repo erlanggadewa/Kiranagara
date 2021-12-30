@@ -8,7 +8,7 @@
   <form action="{{ route('daerah-admin.store') }}" method="post" enctype="multipart/form">
     @csrf
     <div class="px-6 py-4 border rounded-lg shadow-lg bg-tertiary border-secondary">
-      <div class="gap-8 lg:flex">
+      <div class=" gap-8 lg:flex">
         <div class="basis-1/2">
           <div class="mt-0">
             <x-input-basic label="Nama Daerah" name="name" placeholder="Nama Daerah"></x-input-basic>
@@ -36,11 +36,12 @@
             </div>
           </div>
 
-          <div class="block h-full mt-6 font-semibold text-gray-600 select-none ">
+          <div class="block h-full w-full mt-6 font-semibold text-gray-600 select-none ">
             <label for="description" class="inline-block mb-2">Deskripsi</label>
-            <div class="w-full">
-              <input id="description" type="hidden" name="description" value="{{ old('description') }}">
-              <trix-editor id="description" input="description" class="w-full"></trix-editor>
+            <div class="w-full ">
+              <input id="description" class="" type="hidden" name="description"
+                value="{{ old('description') }}">
+              <trix-editor id="description" input="description" class="break-all"></trix-editor>
             </div>
           </div>
         </div>
@@ -100,7 +101,7 @@
 
       $("#img-daerah").ijaboCropTool({
         preview: "#preview-img-daerah",
-        setRatio: 16 / 9,
+        setRatio: 5 / 2,
         allowedExtensions: ["jpg", "jpeg", "png"],
         buttonsText: ["CROP", "QUIT"],
         buttonsColor: ["#0E4542", "#e60033", -15],

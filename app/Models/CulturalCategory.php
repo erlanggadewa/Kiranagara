@@ -12,6 +12,6 @@ class CulturalCategory extends Model
 
   public function culturalData()
   {
-    return $this->belongsTo(CulturalData::class);
+    return $this->hasMany(CulturalData::class);
   }
 }

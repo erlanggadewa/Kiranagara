@@ -59,9 +59,10 @@ class RegionController extends Controller
    * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function show(Region $region)
+  public function show(Request $request, Region $region)
   {
-    //
+    $detailData = Region::find($request->id);
+    return view('admin.detail-daerah', compact('detailData'));
   }
 
   /**
@@ -70,9 +71,10 @@ class RegionController extends Controller
    * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function edit(Region $region)
+  public function edit(Request $request, Region $region)
   {
-    //
+    $selectedData = Region::find($request->id);
+    return view('admin.edit-daerah', compact('selectedData'));
   }
 
   /**
@@ -84,7 +86,17 @@ class RegionController extends Controller
    */
   public function update(UpdateRegionRequest $request, Region $region)
   {
-    //
+    $region = $request->validate([
+      'name' => ['required', 'string', 'max:255'],
+      'latitude' => ['required', 'string'],
+      'longitude' => ['required', 'string'],
+      'size_area' => ['required', 'integer', 'min:0'],
+      'population' => ['required', 'integer', 'min:0'],
+      'description' => ['required'],
+      'img' =>  ['required', 'string', 'max:255'],
+    ]);
+    Region::find($request->id)->update($region);
+    return redirect()->back()->withToastSuccess('Data Berhasil Diubah!');
   }
 
   /**
@@ -93,9 +105,13 @@ class RegionController extends Controller
    * @param  \App\Models\Region  $region
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Region $region)
+  public function destroy(Request $request, Region $region)
   {
-    //
+    $status = Region::find($request->id)->delete();
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Dihapus');
   }
 
   function crop(Request $request)

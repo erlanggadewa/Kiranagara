@@ -53,9 +53,10 @@ class CulturalDataController extends Controller
    * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function show(CulturalData $culturalData)
+  public function show(CulturalData $culturalData, Request $request)
   {
-    //
+    $detailData = CulturalData::where('id', '=', $request->id)->get()[0];
+    return view('admin.detail-budaya', compact('detailData'));
   }
 
   /**
@@ -64,9 +65,16 @@ class CulturalDataController extends Controller
    * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function edit(CulturalData $culturalData)
+  public function edit(Request $request, CulturalData $culturalData)
   {
-    //
+    $selectedData = CulturalData::where('id', '=', $request->id)->get()[0];
+    return view(
+      'admin.edit-budaya',
+      [
+        "selectedData" => $selectedData,
+        "culturalCategories" => CulturalCategory::all()
+      ]
+    );
   }
 
   /**
@@ -78,7 +86,15 @@ class CulturalDataController extends Controller
    */
   public function update(UpdateCulturalDataRequest $request, CulturalData $culturalData)
   {
-    //
+    $data = $request->validate([
+      'name' => ['required', 'string', 'max:255', 'unique:cultural_data'],
+      'cultural_category_id' => ['required', 'integer', 'max:255'],
+      'img' =>  ['required', 'string', 'max:255'],
+      'description' =>  ['required', 'string']
+    ]);
+
+    CulturalData::where("id", "=", $request->id)->update($data);
+    return redirect()->back()->withToastSuccess('Data Berhasil Diupdate!');
   }
 
   /**
@@ -87,9 +103,13 @@ class CulturalDataController extends Controller
    * @param  \App\Models\CulturalData  $culturalData
    * @return \Illuminate\Http\Response
    */
-  public function destroy(CulturalData $culturalData)
+  public function destroy(Request $request)
   {
-    //
+    $status = CulturalData::where('id', '=', $request->id)->delete();
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Dihapus');
   }
 
   function crop(Request $request)

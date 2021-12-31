@@ -4,11 +4,14 @@
     <h1 class="text-xl font-bold">Konten Kuis</h1>
   </div>
 
-  <x-auth-validation-error title="Gagal Menambahkan Data"></x-auth-validation-error>
+  <x-auth-validation-error title="Gagal Mengedit Data"></x-auth-validation-error>
 
-  <form action="{{ route('kuis-admin.store') }}" method="post" enctype="multipart/form">
+  <form action="{{ route('kuis-admin.update', $selectedData->id) }}" method="post" enctype="multipart/form">
     @csrf
-    <input id="img-name-kuis" type="hidden" value="no-img.png" name="img">
+    @method('PUT')
+    <input type="hidden" value="{{ $selectedData->id }}" name="id">
+
+    <input id="img-name-kuis" type="hidden" value="{{ $selectedData->img }}" name="img">
 
     <div class="grid w-full gap-8 px-6 py-4 border rounded-md shadow-lg xl:grid-cols-4 bg-tertiary border-secondary">
       {{-- section left --}}
@@ -19,9 +22,10 @@
           <label>
             <span class="inline-block mb-2 font-bold text-gray-600 select-none">Level</span>
             <select
-              class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary"
+              class="w-full px-3 py-3 text-sm capitalize transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary"
               name="level" id="category">
-              <option value="" selected="selected" hidden="hidden">Choose one</option>
+              <option value="{{ $selectedData->level }}" class="" selected>{{ $selectedData->level }}
+              </option>
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
@@ -59,7 +63,9 @@
               </p>
             </div>
             <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-              <img id="preview-img-kuis" class="h-full">
+              <img
+                src="{{ $selectedData->img != 'no-img.png' ? asset('img/kuis') . '/' . $selectedData->img : asset('img/no-img.png') }}"
+                id="preview-img-kuis" class="object-cover h-full">
             </div>
             <input id="img-kuis" name="img-file" type="file" accept="image/*" class="hidden">
           </label>
@@ -73,7 +79,7 @@
           <div class="block h-full font-semibold text-gray-600 select-none ">
             <label for="question" class="inline-block mb-2 font-bold">Soal</label>
             <div class="w-full h-full">
-              <input id="question" type="hidden" name="question" value="{{ old('question') }}">
+              <input id="question" type="hidden" name="question" value="{!! $selectedData->question !!}">
               <trix-editor id="question" class="" input="question">
               </trix-editor>
             </div>
@@ -83,39 +89,51 @@
         {{-- answer set --}}
         <div class="grid grid-cols-1 gap-3 lg:grid-cols-2 ">
           <div class="relative mt-3">
-            <input name="option_1" value="{{ old('option_1') }}" placeholder="Opsi A"
+            <input name="option_1" value="{{ $selectedData->option_1 }}" placeholder="Opsi A"
               class="w-full py-3 pl-3 pr-10 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary" />
             <input name="correct_option"
-              class="absolute -translate-y-1/2 appearance-none checked:bg-primary right-4 top-1/2" type="radio"
-              value="a">
+              class="absolute -translate-y-1/2 appearance-none correct_option checked:bg-primary right-4 top-1/2"
+              type="radio" value="a">
           </div>
           <div class="relative mt-3">
-            <input name="option_2" value="{{ old('option_2') }}" placeholder="Opsi B"
+            <input name="option_2" value="{{ $selectedData->option_2 }}" placeholder="Opsi B"
               class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary" />
             <input name="correct_option"
-              class="absolute -translate-y-1/2 appearance-none checked:bg-primary right-4 top-1/2" type="radio"
-              value="b">
+              class="absolute -translate-y-1/2 appearance-none correct_option checked:bg-primary right-4 top-1/2"
+              type="radio" value="b">
           </div>
           <div class="relative mt-3">
-            <input name="option_3" value="{{ old('option_3') }}" placeholder="Opsi C"
+            <input name="option_3" value="{{ $selectedData->option_3 }}" placeholder="Opsi C"
               class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary" />
             <input name="correct_option"
-              class="absolute -translate-y-1/2 appearance-none checked:bg-primary right-4 top-1/2" type="radio"
-              value="c">
+              class="absolute -translate-y-1/2 appearance-none correct_option checked:bg-primary right-4 top-1/2"
+              type="radio" value="c">
           </div>
           <div class="relative mt-3">
-            <input name="option_4" value="{{ old('option_4') }}" placeholder="Opsi D"
+            <input name="option_4" value="{{ $selectedData->option_4 }}" placeholder="Opsi D"
               class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border-0 rounded shadow focus:outline-none focus:ring focus:ring-primary" />
             <input name="correct_option"
-              class="absolute -translate-y-1/2 appearance-none checked:bg-primary right-4 top-1/2" type="radio"
-              value="d">
+              class="absolute -translate-y-1/2 appearance-none correct_option checked:bg-primary right-4 top-1/2"
+              type="radio" value="d">
           </div>
         </div>
-        <x-button class="mt-4 xl:mt-11" type="submit">Submit</x-button>
+        <button
+          class="flex items-center justify-center w-full h-12 mt-6 font-semibold text-center text-white duration-200 bg-red-600 border-2 rounded-lg cursor-pointer xl:mt-11 hover:bg-red-700 hover:text-white hover:border-red-700"
+          type="reset">
+          Reset
+        </button>
+        <x-button class="mt-4" type="submit">Submit</x-button>
       </div>
     </div>
   </form>
   <script>
+    const data = document.querySelectorAll('.correct_option')
+    data.forEach(function(el) {
+      if (el.value == '{{ "$selectedData->correct_option" }}') {
+        el.setAttribute('checked', 'checked');
+      }
+    })
+
     function alert(msg, status) {
       Swal.fire(
         `${status}`, `${msg}`,

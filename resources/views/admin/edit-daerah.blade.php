@@ -3,36 +3,44 @@
     <h1 class="text-xl font-bold">Konten Daerah</h1>
   </div>
 
-  <x-auth-validation-error title="Gagal Menambahkan Data"></x-auth-validation-error>
+  <x-auth-validation-error title="Gagal Mengedit Data"></x-auth-validation-error>
 
-  <form action="{{ route('daerah-admin.store') }}" method="post" enctype="multipart/form">
+  <form action="{{ route('daerah-admin.update', $selectedData->id) }}" method="post" enctype="multipart/form">
     @csrf
+    @method("PUT")
+
+    <input type="hidden" value="{{ $selectedData->id }}" name="id">
     <div class="px-6 py-4 border rounded-lg shadow-lg bg-tertiary border-secondary">
-      <div class="gap-8  lg:flex">
+      <div class="gap-8 lg:flex">
         <div class="basis-1/2">
           <div class="mt-0">
-            <x-input-basic label="Nama Daerah" name="name" placeholder="Nama Daerah"></x-input-basic>
+            <x-input-basic-update value="{{ $selectedData->name }}" label="Nama Daerah" name="name"
+              placeholder="Nama Daerah">
+            </x-input-basic-update>
           </div>
           {{-- latitude, longitude --}}
           <div class="gap-5 lg:flex">
             <div class="mt-6 basis-1/2">
-              <x-input-basic label="Latitude" name="latitude" placeholder="Ex : -0.789275 "></x-input-basic>
+              <x-input-basic-update value="{{ $selectedData->latitude }}" label="Latitude" name="latitude"
+                placeholder="Ex : -0.789275 ">
+              </x-input-basic-update>
             </div>
             <div class="mt-6 basis-1/2">
-              <x-input-basic label="Longitude" name="longitude" placeholder="Ex : 113.921326"></x-input-basic>
+              <x-input-basic-update value="{{ $selectedData->longitude }}" label="Longitude" name="longitude"
+                placeholder="Ex : 113.921326"></x-input-basic-update>
             </div>
           </div>
           {{-- region, population --}}
           <div class="gap-5 lg:flex">
             <div class="mt-6 basis-1/2">
-              <x-input-basic label="Ukuran Daerah (Km²)" name="size_area" placeholder="Luas wilayah" type="number"
-                min="0">
-              </x-input-basic>
+              <x-input-basic-update value="{{ $selectedData->size_area }}" label="Ukuran Daerah (Km²)"
+                name="size_area" placeholder="Luas wilayah" type="number" min="0">
+              </x-input-basic-update>
             </div>
             <div class="mt-6 basis-1/2">
-              <x-input-basic label="Jumlah Penduduk (Juta)" name="population" placeholder="Jumlah penduduk"
-                type="number" min="0">
-              </x-input-basic>
+              <x-input-basic-update value="{{ $selectedData->population }}" label="Jumlah Penduduk (Juta)"
+                name="population" placeholder="Jumlah penduduk" type="number" min="0">
+              </x-input-basic-update>
             </div>
           </div>
 
@@ -40,8 +48,8 @@
             <label for="description" class="inline-block mb-2">Deskripsi</label>
             <div class="w-full ">
               <input id="description" class="" type="hidden" name="description"
-                value="{{ old('description') }}">
-              <trix-editor value="{{ old('description') }}" id="description" input="description"
+                value="{{ $selectedData->description }}">
+              <trix-editor value="{{ $selectedData->description }}" id="description" input="description"
                 class="break-all"></trix-editor>
             </div>
           </div>
@@ -78,13 +86,20 @@
                 </p>
               </div>
               <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-                <img id="preview-img-daerah" class="h-full">
+                <img
+                  src="{{ $selectedData->img != 'no-img.png' ? asset('img/daerah') . '/' . $selectedData->img : asset('img/no-img.png') }}"
+                  id="preview-img-daerah" class="object-cover h-full">
               </div>
-              <input id="img-name-daerah" type="hidden" value="no-img.png" name="img">
+              <input id="img-name-daerah" type="hidden" value="{{ $selectedData->img }}" name="img">
               <input id="img-daerah" name="img-file" type="file" accept="image/*" class="hidden">
             </label>
           </div>
-          <x-button type="submit" class="mt-7">Submit</x-button>
+          <button
+            class="flex items-center justify-center w-full h-12 mt-6 font-semibold text-center text-white duration-200 bg-red-600 border-2 rounded-lg cursor-pointer hover:bg-red-700 hover:text-white hover:border-red-700"
+            type="reset">
+            Reset
+          </button>
+          <x-button type="submit" class="mt-6 ">Edit</x-button>
         </div>
       </div>
 

@@ -45,8 +45,12 @@
       </div>
     </div>
 
-    @livewire('show-culture')
+    <div id="culturalData">
+      <x-show-culture></x-show-culture>
+
+    </div>
     <x-management-daerah></x-management-daerah>
+    <x-management-kuis></x-management-kuis>
 
 
 
@@ -54,6 +58,39 @@
   </div>
 </x-admin-layout>
 <script>
+  $(window).scroll(function() {
+    sessionStorage.scrollTop = $(this).scrollTop();
+  });
+
+  $(document).ready(function() {
+    if (sessionStorage.scrollTop != "undefined") {
+      $(window).scrollTop(sessionStorage.scrollTop);
+    }
+  });
+  // $(document).ready(function() {
+  //   $(document).on('click', '.pagination a', function(event) {
+  //     event.preventDefault();
+  //     if ($(this).attr('href').includes('culture')) {
+  //       let page = $(this).attr('href').split('culture=')[1];
+  //       getMoreCulture(page)
+  //     } else {
+  //       page = $(this).attr('href').split('region=')[1];
+  //     }
+  //   })
+  // })
+
+  // function getMoreCulture(page) {
+  //   $.ajax({
+  //     type: "GET",
+  // url: "route('get-more-culture') " + "?page=" + page,
+  //     success: function(data) {
+  //       console.log(page)
+  //       $('#culturalData').html(data)
+  //     }
+  //   })
+
+  // }
+
   const diagramKonten = new Chart(
     document.getElementById("diagram-konten").getContext("2d"), {
       type: "doughnut",

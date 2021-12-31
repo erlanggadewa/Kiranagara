@@ -45,7 +45,7 @@ class QuizController extends Controller
       'option_2' => ['required', 'string', 'max:255'],
       'option_3' => ['required', 'string', 'max:255'],
       'option_4' => ['required', 'string', 'max:255'],
-      'correct_option' => ['required', 'string', Rule::in(['option_1', 'option_2', 'option_3', 'option_4'])],
+      'correct_option' => ['required', 'string', Rule::in(['a', 'b', 'c', 'd'])],
       'img' =>  ['required', 'string', 'max:255'],
     ]);
     Quiz::create($quiz);
@@ -58,9 +58,10 @@ class QuizController extends Controller
    * @param  \App\Models\Quiz  $quiz
    * @return \Illuminate\Http\Response
    */
-  public function show(Quiz $quiz)
+  public function show(Request $request, Quiz $quiz)
   {
-    //
+    $detailData = Quiz::find($request->id);
+    return view('admin.detail-kuis', compact('detailData'));
   }
 
   /**
@@ -69,9 +70,10 @@ class QuizController extends Controller
    * @param  \App\Models\Quiz  $quiz
    * @return \Illuminate\Http\Response
    */
-  public function edit(Quiz $quiz)
+  public function edit(Request $request, Quiz $quiz)
   {
-    //
+    $selectedData = Quiz::find($request->id);
+    return view('admin.edit-kuis', compact('selectedData'));
   }
 
   /**
@@ -83,7 +85,22 @@ class QuizController extends Controller
    */
   public function update(UpdateQuizRequest $request, Quiz $quiz)
   {
-    //
+    $quiz = $request->validate([
+      'level' => ['required', 'string', Rule::in(['easy', 'medium', 'hard', 'expert'])],
+      'question' => ['required'],
+      'option_1' => ['required', 'string', 'max:255'],
+      'option_2' => ['required', 'string', 'max:255'],
+      'option_3' => ['required', 'string', 'max:255'],
+      'option_4' => ['required', 'string', 'max:255'],
+      'correct_option' => ['required', 'string', Rule::in(['a', 'b', 'c', 'd'])],
+      'img' =>  ['required', 'string', 'max:255'],
+    ]);
+
+    $status = Quiz::find($request->id)->update($quiz);
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Diedit');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Diedit');
   }
 
   /**
@@ -92,9 +109,13 @@ class QuizController extends Controller
    * @param  \App\Models\Quiz  $quiz
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Quiz $quiz)
+  public function destroy(Request $request, Quiz $quiz)
   {
-    //
+    $status = Quiz::find($request->id)->delete();
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Dihapus');
   }
 
   function crop(Request $request)

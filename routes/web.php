@@ -32,6 +32,7 @@ Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
 Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function () {
 
   Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
+  // Route::get('/get-more', [DashboardAdminController::class, 'getMoreCulture'])->name('get-more-culture');
 
   Route::get('/budaya', [CulturalDataController::class, 'create'])->name('budaya-admin');
 

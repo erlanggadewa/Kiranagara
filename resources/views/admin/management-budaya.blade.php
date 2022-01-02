@@ -1,7 +1,8 @@
-<!-- Konten Daerah -->
-@if ($regions->count())
+<!-- Konten Budaya -->
+@if ($dataBudaya->count())
+
   <div>
-    <h1 class="mt-10 text-xl font-bold">Konten Daerah</h1>
+    <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>
     <hr class="mt-2 mb-4 border-2 shadow-sm border-tertiary bg-tertiary">
     <div class="flex justify-end ">
       <div
@@ -11,12 +12,12 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
             d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <a href="{{ route('daerah-admin.create') }}">
+        <a href="{{ route('budaya-admin') }}">
           <h1 class="group-hover:text-sky-800">Tambah Data</h1>
         </a>
       </div>
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col ">
       <div class="overflow-x-auto ">
         <div class="inline-block min-w-full py-2 align-middle shadow-md ">
           <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
@@ -29,15 +30,11 @@
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                    Nama Daerah
+                    Judul
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                    Jumlah Penduduk
-                  </th>
-                  <th scope="col"
-                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                    Luas Daerah
+                    Kategori
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
@@ -49,8 +46,7 @@
                 @php
                   $no = 1;
                 @endphp
-                @foreach ($regions as $item)
-
+                @foreach ($dataBudaya as $culturalData)
                   <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center justify-center">
@@ -62,24 +58,22 @@
                     <td class="px-6 py-4 whitespace-nowrap">
                       <div class="flex items-center">
                         <div class="text-sm font-medium text-gray-900">
-                          {{ $item->name }}
+                          {{ $culturalData->name }}
                         </div>
                       </div>
                     </td>
+
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">{{ number_format($item->population) . ' Juta Jiwa' }}</div>
+                      <div class="text-sm text-gray-900">{{ $culturalData->culturalCategory->name }}</div>
                     </td>
+                    {{-- action --}}
                     <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">{{ number_format($item->size_area) }} km<sup>2</sup></div>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      {{-- delete --}}
-                      <form id="form-delete-daerah-{{ $item->id }}" class="inline-block"
-                        action="{{ route('daerah-admin.destroy', $item) }}" method="POST">
+                      <form id="form-delete-budaya-{{ $culturalData->id }}" class="inline-block"
+                        action="{{ route('data-budaya.destroy', $culturalData) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <div class="cursor-pointer" onclick="confirmDeleteRegion({{ $item->id }})">
-                          <input type="hidden" name="id" value="{{ $item->id }}">
+                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
+                        <div class="cursor-pointer" onclick="confirmDeleteCulture({{ $culturalData->id }})">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
@@ -89,10 +83,12 @@
                             </svg>
                           </span>
                         </div>
+
                       </form>
-                      {{-- update --}}
-                      <form class="inline-block" method="GET" action="{{ route('daerah-admin.edit', $item) }}">
-                        <input type="hidden" value={{ $item->id }} name="id">
+
+                      <form class="inline-block" action="{{ route('data-budaya.edit', $culturalData->id) }}"
+                        method="GET">
+                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
                         <button type="submit">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-blue-800 bg-blue-100 rounded-md">
@@ -104,9 +100,10 @@
                           </span>
                         </button>
                       </form>
-                      {{-- detail --}}
-                      <form class="inline-block" method="GET" action="{{ route('daerah-admin.show', $item) }}">
-                        <input type="hidden" value={{ $item->id }} name="id">
+
+                      <form class="inline-block" action="{{ route('data-budaya.show', $culturalData->id) }}"
+                        method="GET">
+                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
                         <button type="submit">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-md">
@@ -123,21 +120,20 @@
                     </td>
                   </tr>
                 @endforeach
-
               </tbody>
+
             </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div>
-    {!! $regions->links() !!}
+  <div class="mt-4">
+    {!! $dataBudaya->links() !!}
   </div>
   <script>
-    function confirmDeleteRegion(id) {
-      const data = document.getElementById(`form-delete-daerah-${id}`);
-
+    function confirmDeleteCulture(id) {
+      const data = document.getElementById(`form-delete-budaya-${id}`);
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: "btn btn-success",
@@ -176,17 +172,18 @@
         });
     };
   </script>
+
 @else
-  <h1 class="mt-10 text-xl font-bold">Konten Daerah</h1>
+  <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>
   <hr class="mt-2 mb-4 border-2 shadow-sm border-tertiary bg-tertiary">
+
   <div class="alert alert-error">
     <div class="flex-1">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
       </svg>
-      <label>Data Daerah Kosong!</label>
+      <label>Data Budaya Kosong!</label>
     </div>
   </div>
-
 @endif

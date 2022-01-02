@@ -16,8 +16,16 @@ class QuizController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index($level)
   {
+
+    return view(
+      'user.quiz',
+      [
+        'level' => $level,
+        "quizzes" => Quiz::where('level', '=', $level)->inRandomOrder()->take(10)->get()
+      ]
+    );
   }
 
   /**

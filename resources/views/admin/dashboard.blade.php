@@ -40,15 +40,12 @@
 
     <div class="grid justify-center p-5 mt-10 rounded-md shadow-md bg-tertiary">
       <h1 class="mt-5 mb-10 text-xl font-bold text-center">Diagram Konten</h1>
-      <div class="max-w-sm">
+      <div class="">
         <canvas id="diagram-konten" class="w-full cursor-pointer "></canvas>
       </div>
     </div>
 
-    <div id="culturalData">
-      <x-show-culture></x-show-culture>
-
-    </div>
+    <x-management-budaya></x-management-budaya>
     <x-management-daerah></x-management-daerah>
     <x-management-kuis></x-management-kuis>
 
@@ -67,33 +64,10 @@
       $(window).scrollTop(sessionStorage.scrollTop);
     }
   });
-  // $(document).ready(function() {
-  //   $(document).on('click', '.pagination a', function(event) {
-  //     event.preventDefault();
-  //     if ($(this).attr('href').includes('culture')) {
-  //       let page = $(this).attr('href').split('culture=')[1];
-  //       getMoreCulture(page)
-  //     } else {
-  //       page = $(this).attr('href').split('region=')[1];
-  //     }
-  //   })
-  // })
-
-  // function getMoreCulture(page) {
-  //   $.ajax({
-  //     type: "GET",
-  // url: "route('get-more-culture') " + "?page=" + page,
-  //     success: function(data) {
-  //       console.log(page)
-  //       $('#culturalData').html(data)
-  //     }
-  //   })
-
-  // }
 
   const diagramKonten = new Chart(
     document.getElementById("diagram-konten").getContext("2d"), {
-      type: "doughnut",
+      type: "bar",
       data: {
         labels: [
           "Soal Kuis",

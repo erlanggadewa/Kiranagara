@@ -2,7 +2,9 @@
   @include('layouts.header')
 
   <div class="flex gap-10 p-5">
-    @include('layouts.navigation-user')
+    @if (!request()->routeIs('quiz-user'))
+      @include('layouts.navigation-user')
+    @endif
     <!-- Page Content -->
     <main class="overflow-auto basis-full">
       {{ $slot }}

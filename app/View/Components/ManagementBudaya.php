@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Models\CulturalData;
 use Illuminate\View\Component;
 
-class ShowCulture extends Component
+class ManagementBudaya extends Component
 {
 
   /**
@@ -25,6 +25,6 @@ class ShowCulture extends Component
   public function render()
   {
     $culturalData = CulturalData::paginate($perPage = 5, $columns = ['*'], $pageName = 'culture');
-    return view('admin.show-culture', ["dataBudaya" => $culturalData]);
+    return view('admin.management-budaya', ["dataBudaya" => $culturalData]);
   }
 }

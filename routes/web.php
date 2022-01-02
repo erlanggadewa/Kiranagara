@@ -24,6 +24,8 @@ use App\Http\Controllers\CulturalCategoryController;
 Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
 
+  Route::get('/quiz/{level}', [QuizController::class, 'index'])->name('quiz-user');
+
   Route::get('/budaya/{id}', [CulturalDataController::class, 'index'])->name('budaya-user');
 
   Route::get('/daerah/{region}', [RegionController::class, 'index'])->name('daerah-user');
@@ -32,7 +34,8 @@ Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
 Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function () {
 
   Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
-  // Route::get('/get-more', [DashboardAdminController::class, 'getMoreCulture'])->name('get-more-culture');
+
+
 
   Route::get('/budaya', [CulturalDataController::class, 'create'])->name('budaya-admin');
 

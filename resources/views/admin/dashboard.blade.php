@@ -43,7 +43,7 @@
       <div class="md:hidden w-[280px] sm:w-80 ">
         <canvas id="diagram-doughnut" class="  cursor-pointer "></canvas>
       </div>
-      <div class="hidden md:block md:w-[500px] lg:w-[600px]">
+      <div class="hidden md:block md:w-[500px] lg:w-[800px]">
         <canvas id="diagram-bar" class=" cursor-pointer"></canvas>
       </div>
     </div>
@@ -71,10 +71,14 @@
 
   const data = {
     labels: [
-      "Soal Kuis",
+      "Total Kuis",
       "Kategori Budaya",
       "Konten Budaya",
       "Konten Daerah",
+      "Kuis Easy",
+      "Kuis Medium",
+      "Kuis Hard",
+      "Kuis Expert",
     ],
     datasets: [{
       label: "Diagram Konten",
@@ -82,7 +86,11 @@
         {{ $totalQuiz }},
         {{ $totalCulturalCategory }},
         {{ $totalCulturalData }},
-        {{ $totalRegion }}
+        {{ $totalRegion }},
+        {{ $totalEasy }},
+        {{ $totalMedium }},
+        {{ $totalHard }},
+        {{ $totalExpert }},
       ],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
@@ -90,7 +98,10 @@
         "rgba(255, 206, 86, 0.2)",
         "rgba(75, 192, 192, 0.2)",
         "rgba(153, 102, 255, 0.2)",
-        "rgba(255, 159, 64, 0.2)",
+        "rgba(9, 25, 9, 0.2)",
+        "rgba(25, 159, 64, 0.2)",
+        "rgba(127, 9, 64, 0.2)",
+        "rgba(2, 19, 234, 0.2)",
       ],
       borderColor: [
         "rgba(255, 99, 132, 1)",
@@ -98,7 +109,10 @@
         "rgba(255, 206, 86, 1)",
         "rgba(75, 192, 192, 1)",
         "rgba(153, 102, 255, 1)",
-        "rgba(255, 159, 64, 1)",
+        "rgba(9, 25, 9, 1)",
+        "rgba(25, 159, 64, 1)",
+        "rgba(127, 9, 64, 1)",
+        "rgba(2, 19, 234, 1)",
       ],
       borderWidth: 1,
     }, ],

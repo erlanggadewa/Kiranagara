@@ -39,8 +39,8 @@
         'rounded-b-xl',
         'flex-col',
         'bg-green-500' => $isEasy,
-        'bg-yellow-500' => $isMedium,
-        'bg-pink-500' => $isHard,
+        'bg-sky-500' => $isMedium,
+        'bg-orange-500' => $isHard,
         'bg-red-500' => $isExpert,
     ])>
       <h1 class="text-white text-lg font-semibold  capitalize">Level {{ $level }}</h1>
@@ -54,13 +54,23 @@
     @endphp
     @foreach ($quizzes as $item)
 
-      <div
-        class="select-none relative flex flex-col justify-center flex-grow-0 max-w-4xl gap-6 p-6 mt-14 duration-300 rounded-lg soal sm:items-center md:flex-row md:hover:transform md:hover:scale-105 md:p-10 hover:ring-4 hover:shadow-2xl ring-green-500"
-        style="background-color: #ececec">
+      <div @class([
+          'wrapper-quiz',
+          'soal',
+          'ring-green-500' => $isEasy,
+          'ring-sky-500' => $isMedium,
+          'ring-orange-500' => $isHard,
+          'ring-red-500' => $isExpert,
+      ]) style="background-color: #ececec">
         {{-- nomor --}}
-        <div
-          class="shadow-md shadow-secondary ring-2 ring-green-400 w-12 justify-center items-center text-white flex align-middle h-12 bg-gray-700 absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 rounded-3xl">
-          <h1 class=" block w-full text-center font-semibold text-lg">{{ $no++ }}</h1>
+        <div @class([
+            'number-quiz',
+            'ring-green-400' => $isEasy,
+            'ring-sky-400' => $isMedium,
+            'ring-orange-400' => $isHard,
+            'ring-red-400' => $isExpert,
+        ])>
+          <h1 class=" block w-full text-center font-semibold text-2xl">{{ $no++ }}</h1>
         </div>
 
         {{-- gambar soal --}}
@@ -130,23 +140,44 @@
     <div class="fixed inset-x-0 bottom-0 px-5">
       <div class="flex items-center justify-between mb-2">
         <div>
-          <span
-            class="inline-block px-2 py-1 text-xs font-semibold text-green-600 uppercase bg-green-200 rounded-full shadow-md ">
+          <span @class([
+              'progress-title',
+              'text-green-600 bg-green-200' => $isEasy,
+              'text-sky-600 bg-sky-200' => $isMedium,
+              'text-orange-600 bg-orange-200' => $isHard,
+              'text-red-600 bg-red-200' => $isExpert,
+          ])>
             Progress Quiz
           </span>
         </div>
-        <div class="">
-          <span
-            class="p-3 w-12 h-8 shadow-md flex items-center justify-center bg-green-200 rounded-xl  text-base font-bold text-green-600 ">
-            <h1 id="text-percent" class="">
+        <div>
+          <span @class([
+              'text-percent',
+              'text-green-600  bg-green-200' => $isEasy,
+              'text-sky-600 bg-sky-200' => $isMedium,
+              'text-orange-600 bg-orange-200' => $isHard,
+              'text-red-600 bg-red-200' => $isExpert,
+          ])>
+            <h1 id="text-percent">
               0%
             </h1>
           </span>
         </div>
       </div>
-      <div class="shadow-md flex h-2 mb-4 overflow-hidden text-xs bg-green-200 rounded">
-        <div id="progress"
-          class="flex flex-col justify-center text-center text-white bg-green-500 shadow-none  whitespace-nowrap">
+      <div @class([
+          'progress-inactive',
+          'bg-green-200' => $isEasy,
+          'bg-sky-200' => $isMedium,
+          'bg-orange-200' => $isHard,
+          'bg-red-200' => $isExpert,
+      ])>
+        <div id="progress" @class([
+            'progress-active',
+            'bg-green-500' => $isEasy,
+            'bg-sky-500' => $isMedium,
+            'bg-orange-500' => $isHard,
+            'bg-red-500' => $isExpert,
+        ])>
         </div>
 
       </div>

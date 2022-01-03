@@ -24,6 +24,7 @@ use App\Http\Controllers\CulturalCategoryController;
 Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
 
+  Route::get('/quiz/answer/{id}/{userAnswers}', 'App\Http\Controllers\QuizController@getAnswer')->name('get-answer');
   Route::get('/quiz/{level}', [QuizController::class, 'index'])->name('quiz-user');
 
   Route::get('/budaya/{id}', [CulturalDataController::class, 'index'])->name('budaya-user');

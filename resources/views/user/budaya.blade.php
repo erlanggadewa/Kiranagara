@@ -67,7 +67,7 @@
                   </h3>
                   <div class="mt-2">
                     <ul class="mt-3 text-sm text-red-600 list-disc list-inside">
-                      Harap isi data !!
+                      Hubungi admin untuk mengisi data!!
                     </ul>
                   </div>
                 </div>

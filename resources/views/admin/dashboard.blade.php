@@ -38,10 +38,13 @@
 
     </div>
 
-    <div class="grid justify-center p-5 mt-10 rounded-md shadow-md bg-tertiary">
-      <h1 class="mt-5 mb-10 text-xl font-bold text-center">Diagram Konten</h1>
-      <div class="">
-        <canvas id="diagram-konten" class="w-full cursor-pointer "></canvas>
+    <div class="grid justify-center px-5 py-10 mt-10 rounded-md shadow-md bg-tertiary">
+      <h1 class=" mb-10 text-xl font-bold text-center">Diagram Konten</h1>
+      <div class="md:hidden w-[280px] sm:w-80 ">
+        <canvas id="diagram-doughnut" class="  cursor-pointer "></canvas>
+      </div>
+      <div class="hidden md:block md:w-[500px] lg:w-[600px]">
+        <canvas id="diagram-bar" class=" cursor-pointer"></canvas>
       </div>
     </div>
 
@@ -65,44 +68,54 @@
     }
   });
 
-  const diagramKonten = new Chart(
-    document.getElementById("diagram-konten").getContext("2d"), {
+
+  const data = {
+    labels: [
+      "Soal Kuis",
+      "Kategori Budaya",
+      "Konten Budaya",
+      "Konten Daerah",
+    ],
+    datasets: [{
+      label: "Diagram Konten",
+      data: [
+        {{ $totalQuiz }},
+        {{ $totalCulturalCategory }},
+        {{ $totalCulturalData }},
+        {{ $totalRegion }}
+      ],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(255, 159, 64, 1)",
+      ],
+      borderWidth: 1,
+    }, ],
+    options: {},
+  };
+
+  const diagramDoughnut = new Chart(
+    document.getElementById("diagram-doughnut").getContext("2d"), {
+      type: "doughnut",
+      data: data,
+    }
+  );
+
+  const diagramBar = new Chart(
+    document.getElementById("diagram-bar").getContext("2d"), {
       type: "bar",
-      data: {
-        labels: [
-          "Soal Kuis",
-          "Kategori Budaya",
-          "Konten Budaya",
-          "Konten Daerah",
-        ],
-        datasets: [{
-          label: "Diagram Konten",
-          data: [
-            {{ $totalQuiz }},
-            {{ $totalCulturalCategory }},
-            {{ $totalCulturalData }},
-            {{ $totalRegion }}
-          ],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
-          borderWidth: 1,
-        }, ],
-        options: {},
-      },
+      data: data,
     }
   );
 </script>

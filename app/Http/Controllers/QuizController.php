@@ -11,6 +11,17 @@ use App\Http\Requests\UpdateQuizRequest;
 
 class QuizController extends Controller
 {
+
+
+  public function getAnswer($id, $userAnswers)
+  {
+
+    $answer = Quiz::where('id', '=', $id)->select('correct_option')->get();
+    if ($answer[0]->correct_option == $userAnswers) {
+      return response()->json(true);
+    }
+    return response()->json(false);;
+  }
   /**
    * Display a listing of the resource.
    *
@@ -18,12 +29,13 @@ class QuizController extends Controller
    */
   public function index($level)
   {
+    $quizzes = Quiz::where('level', '=', $level)->inRandomOrder()->take(10)->get();
 
     return view(
       'user.quiz',
       [
         'level' => $level,
-        "quizzes" => Quiz::where('level', '=', $level)->inRandomOrder()->take(10)->get()
+        "quizzes" => $quizzes
       ]
     );
   }

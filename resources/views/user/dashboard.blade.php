@@ -67,21 +67,34 @@
     <h1 class="mt-6 text-lg font-bold uppercase md:text-xl text-primary">BUDAYA</h1>
     <hr class="mt-2 border-2 bg-green-800 border-green-800 w-1/2" />
 
-    <div class="flex gap-5 px-4 py-8 overflow-x-auto md:px-5 snap-x">
-      @foreach ($cultureCategories as $cultureCategory)
-        <a href="{{ route('budaya-user', $cultureCategory->id) }}">
-          <div
-            class="snap-center shrink-0 cursor-pointer hover:shadow-slate-400 hover:shadow-lg hover:scale-105 duration-200 hover:ring hover:ring-slate-500 border border-secondary rounded-xl shadow-md p-4 w-52 md:w-60 aspect-[5/4] "
-            style="background-color: rgba(215, 226, 232,0.4)">
-            <img
-              src="
+    @if ($cultureCategories->count())
+      <div class="flex gap-5 px-4 py-8 overflow-x-auto md:px-5 snap-x">
+        @foreach ($cultureCategories as $cultureCategory)
+          <a href="{{ route('budaya-user', $cultureCategory->id) }}">
+            <div
+              class="snap-center shrink-0 cursor-pointer hover:shadow-slate-400 hover:shadow-lg hover:scale-105 duration-200 hover:ring hover:ring-slate-500 border border-secondary rounded-xl shadow-md p-4 w-52 md:w-60 aspect-[5/4] "
+              style="background-color: rgba(215, 226, 232,0.4)">
+              <img
+                src="
             {{ $cultureCategory->img != 'no-img.png' ? asset('img/budaya/kategori/' . $cultureCategory->img) : asset('img/' . $cultureCategory->img) }}"
-              alt="{{ $cultureCategory->img }}" class="object-cover aspect-[3/2] rounded-md shadow-sm">
-            <h1 class="mt-4 text-base font-bold text-center md:text-base">{{ $cultureCategory->name }}</h1>
-          </div>
-        </a>
-      @endforeach
-    </div>
+                alt="{{ $cultureCategory->img }}" class="object-cover aspect-[3/2] rounded-md shadow-sm">
+              <h1 class="mt-4 text-base font-bold text-center md:text-base">{{ $cultureCategory->name }}</h1>
+            </div>
+          </a>
+        @endforeach
+      </div>
+    @else
+      <div class="alert alert-error mt-5">
+        <div class="flex-1">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+            </path>
+          </svg>
+          <label>Kategori Budaya Kosong!</label>
+        </div>
+      </div>
+    @endif
 
   </div>
 
@@ -91,21 +104,34 @@
     <hr class="mt-2 border-2 bg-green-800 border-green-800 w-1/2" />
 
 
-
-    <div class="flex gap-5 px-4 py-8 overflow-x-auto md:px-5 snap-x">
-      @foreach ($regions as $region)
-        <a href="{{ route('daerah-user', $region->id) }}">
-          <div
-            class="snap-center shrink-0 cursor-pointer hover:shadow-emerald-200 hover:shadow-lg hover:scale-105 duration-200 hover:ring hover:ring-emerald-500 border border-secondary rounded-xl shadow-md p-4 w-52 md:w-60 aspect-[5/4] "
-            style="background-color: #D6EDED">
-            <img src="
+    @if ($regions->count())
+      <div class="flex gap-5 px-4 py-8 overflow-x-auto md:px-5 snap-x">
+        @foreach ($regions as $region)
+          <a href="{{ route('daerah-user', $region->id) }}">
+            <div
+              class="snap-center shrink-0 cursor-pointer hover:shadow-emerald-200 hover:shadow-lg hover:scale-105 duration-200 hover:ring hover:ring-emerald-500 border border-secondary rounded-xl shadow-md p-4 w-52 md:w-60 aspect-[5/4] "
+              style="background-color: #D6EDED">
+              <img src="
             {{ $region->img != 'no-img.png' ? asset('img/daerah/' . $region->img) : asset('img/' . $region->img) }}"
-              alt="{{ $region->name }}" class="object-cover aspect-[3/2] rounded-md shadow-sm">
-            <h1 class="mt-4 text-base font-bold text-center md:text-base">{{ $region->name }}</h1>
-          </div>
-        </a>
-      @endforeach
-    </div>
+                alt="{{ $region->name }}" class="object-cover aspect-[3/2] rounded-md shadow-sm">
+              <h1 class="mt-4 text-base font-bold text-center md:text-base">{{ $region->name }}</h1>
+            </div>
+          </a>
+        @endforeach
+      </div>
+    @else
+      <div class="alert alert-error mt-5">
+        <div class="flex-1">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+            </path>
+          </svg>
+          <label>Data Daerah Kosong!</label>
+        </div>
+      </div>
+    @endif
+
 
   </div>
 

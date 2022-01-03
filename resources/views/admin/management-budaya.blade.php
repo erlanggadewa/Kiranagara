@@ -25,7 +25,7 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th scope="col"
-                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                     No.
                   </th>
                   <th scope="col"
@@ -33,29 +33,29 @@
                     Judul
                   </th>
                   <th scope="col"
-                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                     Kategori
                   </th>
                   <th scope="col"
-                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 @php
-                  $no = 1;
+                  $no = $dataBudaya->firstItem();
                 @endphp
                 @foreach ($dataBudaya as $culturalData)
                   <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 whitespace-wrap">
                       <div class="flex items-center justify-center">
                         <div class="text-sm font-medium text-center text-gray-900">
                           {{ $no++ }}
                         </div>
                       </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 whitespace-wrap">
                       <div class="flex items-center">
                         <div class="text-sm font-medium text-gray-900">
                           {{ $culturalData->name }}
@@ -63,8 +63,8 @@
                       </div>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <div class="text-sm text-gray-900">{{ $culturalData->culturalCategory->name }}</div>
+                    <td class="px-6 py-4 whitespace-wrap">
+                      <div class="text-sm text-center text-gray-900">{{ $culturalData->culturalCategory->name }}</div>
                     </td>
                     {{-- action --}}
                     <td class="px-6 py-4 whitespace-nowrap">
@@ -128,51 +128,9 @@
       </div>
     </div>
   </div>
-  <div class="mt-4">
+  <div class="mt-5">
     {!! $dataBudaya->links() !!}
   </div>
-  <script>
-    function confirmDeleteCulture(id) {
-      const data = document.getElementById(`form-delete-budaya-${id}`);
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success",
-          cancelButton: "btn btn-danger",
-        },
-        buttonsStyling: true,
-      });
-
-      swalWithBootstrapButtons
-        .fire({
-          title: "Apa kamu yakin?",
-          text: `Kamu tidak dapat mengembalikan data!`,
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonText: "Yes, delete it!",
-          cancelButtonText: "No, cancel!",
-          reverseButtons: true,
-        })
-        .then((result) => {
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons
-              .fire("Deleted!", `Menghapus Data`, "success")
-              .then(() => {
-                data.submit();
-              });
-          } else if (
-            /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel
-          ) {
-            swalWithBootstrapButtons.fire(
-              "Cancelled",
-              `Gagal menghapus data`,
-              "error"
-            );
-          }
-        });
-    };
-  </script>
-
 @else
   <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>
   <hr class="mt-2 mb-4 border-2 shadow-sm border-tertiary bg-tertiary">
@@ -187,3 +145,44 @@
     </div>
   </div>
 @endif
+<script>
+  function confirmDeleteCulture(id) {
+    const data = document.getElementById(`form-delete-budaya-${id}`);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: true,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Apa kamu yakin?",
+        text: `Kamu tidak dapat mengembalikan data!`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons
+            .fire("Deleted!", `Menghapus Data`, "success")
+            .then(() => {
+              data.submit();
+            });
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            `Gagal menghapus data`,
+            "error"
+          );
+        }
+      });
+  };
+</script>

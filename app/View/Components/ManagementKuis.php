@@ -24,7 +24,7 @@ class ManagementKuis extends Component
    */
   public function render()
   {
-    $quizData = Quiz::orderBy('level', 'asc')->paginate($perPage = 5, $columns = ['*'], $pageName = 'quiz');
+    $quizData = Quiz::orderBy('level', 'asc')->paginate($perPage = 10, $columns = ['*'], $pageName = 'quiz');
     return view('admin.management-kuis', compact('quizData'));
   }
 }

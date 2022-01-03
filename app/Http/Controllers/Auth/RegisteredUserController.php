@@ -34,10 +34,11 @@ class RegisteredUserController extends Controller
    */
   public function store(Request $request)
   {
+    $token = "nayanika_pbw2";
     $request->validate([
       'name' => ['required', 'string', 'max:255'],
       'role' => ['required', 'string', Rule::in(['admin', 'user'])],
-      "token" => [Rule::requiredIf($request->role == 'admin'), Rule::in('papunyil')],
+      "token" => [Rule::requiredIf($request->role == 'admin'), Rule::in($token)],
       'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
       'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);

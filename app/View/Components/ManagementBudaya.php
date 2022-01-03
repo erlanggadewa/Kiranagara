@@ -24,7 +24,7 @@ class ManagementBudaya extends Component
    */
   public function render()
   {
-    $culturalData = CulturalData::paginate($perPage = 5, $columns = ['*'], $pageName = 'culture');
+    $culturalData = CulturalData::paginate($perPage = 10, $columns = ['*'], $pageName = 'culture');
     return view('admin.management-budaya', ["dataBudaya" => $culturalData]);
   }
 }

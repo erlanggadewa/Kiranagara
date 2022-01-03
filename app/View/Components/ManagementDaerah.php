@@ -24,7 +24,7 @@ class ManagementDaerah extends Component
    */
   public function render()
   {
-    $regions = Region::paginate($perPage = 5, $columns = ['*'], $pageName = 'region');
+    $regions = Region::paginate($perPage = 10, $columns = ['*'], $pageName = 'region');
     return view('admin.management-daerah', compact('regions'));
   }
 }

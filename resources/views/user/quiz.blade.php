@@ -21,8 +21,28 @@
 
 <x-app-layout>
   @include("layouts.header")
+  @php
+    $isEasy = $level == 'easy' ? true : false;
+    $isMedium = $level == 'medium' ? true : false;
+    $isHard = $level == 'hard' ? true : false;
+    $isExpert = $level == 'expert' ? true : false;
+  @endphp
+
   <div class="flex justify-center">
-    <div class=" w-1/2 h-10 flex justify-center shadow-md items-center rounded-b-xl flex-col bg-green-500">
+    <div @class([
+        'w-1/2',
+        'h-10',
+        'flex',
+        'justify-center',
+        'shadow-md',
+        'items-center',
+        'rounded-b-xl',
+        'flex-col',
+        'bg-green-500' => $isEasy,
+        'bg-yellow-500' => $isMedium,
+        'bg-pink-500' => $isHard,
+        'bg-red-500' => $isExpert,
+    ])>
       <h1 class="text-white text-lg font-semibold  capitalize">Level {{ $level }}</h1>
     </div>
   </div>
@@ -58,8 +78,8 @@
           </h1>
           <form id="{{ $radio }}" class="form-answer">
             <!-- opsi 1 -->
-            <label class="label-answer" for="radio{{ $radio }}" value="A">
-              <input id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
+            <label class="label-answer" for="radio{{ $radio }}">
+              <input value="A" id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
               <div class="flex items-center">
                 <span
                   class="inline-block w-6 h-6 aspect-square mr-2 border-2 border-blue-400 rounded-full flex-no-shrink"></span>
@@ -70,8 +90,8 @@
             </label>
 
             <!-- opsi 2 -->
-            <label class="label-answer" for="radio{{ $radio }}" value="B">
-              <input id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
+            <label class="label-answer" for="radio{{ $radio }}">
+              <input value="B" id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
               <div class="flex items-center">
                 <span
                   class="inline-block w-6 h-6 aspect-square mr-2 border-2 border-blue-400 rounded-full flex-no-shrink"></span>
@@ -80,8 +100,8 @@
             </label>
 
             <!-- opsi 3 -->
-            <label class="label-answer" for="radio{{ $radio }}" value="C">
-              <input id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
+            <label class="label-answer" for="radio{{ $radio }}">
+              <input value="C" id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
               <div class="flex items-center">
                 <span
                   class="inline-block w-6 h-6 aspect-square mr-2 border-2 border-blue-400 rounded-full flex-no-shrink"></span>
@@ -90,8 +110,8 @@
             </label>
 
             <!-- opsi 4 -->
-            <label class="label-answer" for="radio{{ $radio }}" value="D">
-              <input id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
+            <label class="label-answer" for="radio{{ $radio }}">
+              <input value="D" id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
               <div class="flex items-center">
                 <span
                   class="inline-block w-6 h-6 aspect-square mr-2 border-2 border-blue-400 rounded-full flex-no-shrink"></span>
@@ -133,66 +153,5 @@
     </div>
 
   </div>
-
-
-
 </x-app-layout>
-<script>
-  let data = [];
-  @foreach ($quizzes as $quiz)
-    data.push({question: '{{ $quiz->question }}', answer: '{{ $quiz->correct_option }}'});
-  @endforeach
-
-
-  let benar = 0;
-  let salah = 0;
-  let counter = 0;
-
-  const hasil = document.querySelectorAll("div.hasil");
-
-  let percentProgress = 0;
-
-  const questions = document.querySelectorAll("div.soal");
-  questions.forEach((element, i) => {
-    const labelAnswers = document.querySelectorAll("label.label-answer")
-    const userAnswers = element.querySelectorAll("input.answer");
-    userAnswers.forEach((element) => {
-      element.addEventListener("click", (e) => {
-        element.closest("form.form-answer").classList.add("pointer-events-none");
-
-        let progress = document.getElementById("progress");
-        const textProgress = document.getElementById("text-percent");
-        progress.setAttribute("style", `width: ${percentProgress+=10}%`);
-        textProgress.innerHTML = `${percentProgress}%`;
-
-        const id = element.closest("form.form-answer").getAttribute("id");
-        console.log(labelAnswers)
-        console.log(userAnswers[0].value)
-        console.log(userAnswers[1].value)
-        console.log(userAnswers[2].value)
-        console.log(userAnswers[3].value)
-        let status = fetch(`/quiz/answer/${id}/${userAnswers.value}`)
-          .then((res) => console.log(res)).then(res => console.log(res))
-          .catch((err) => console.log(err));
-
-        if (status) {
-          benar++;
-          hasil[i].innerHTML = printBenar();
-        } else {
-          salah++;
-          hasil[i].innerHTML = printSalah();
-        }
-
-
-      });
-    }, true);
-  });
-
-  function printBenar() {
-    return '<div style="background-color: #e6fef8" class="text-sm px-4 py-2 rounded-xl"><h1 style="color: #018d40">Horee, jawabanmu benar 😎 Tetap pertahankan yaa 💯💯💯</h1></div>';
-  }
-
-  function printSalah() {
-    return '<div style="background-color: #fff4dd" class="text-sm px-4 py-2 rounded-xl"><h1 style="color: #d97b41">Yaahh, jawabanmu salah 😥 Jangan putus asa ya 💥💖</h1></div>';
-  }
-</script>
+<script src="{{ asset('js/quiz.js') }}"></script>

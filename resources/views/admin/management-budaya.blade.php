@@ -129,7 +129,7 @@
     </div>
   </div>
   <div class="mt-5">
-    {!! $dataBudaya->links() !!}
+    {!! $dataBudaya->onEachSide(0)->links() !!}
   </div>
 @else
   <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>

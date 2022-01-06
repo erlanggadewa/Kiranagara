@@ -87,7 +87,7 @@ class CulturalDataController extends Controller
   public function update(UpdateCulturalDataRequest $request, CulturalData $culturalData)
   {
     $data = $request->validate([
-      'name' => ['required', 'string', 'max:255', 'unique:cultural_data'],
+      'name' => ['required', 'string', 'max:255', 'unique:cultural_data,name,' . $request->id],
       'cultural_category_id' => ['required', 'integer', 'max:255'],
       'img' =>  ['required', 'string', 'max:255'],
       'description' =>  ['required', 'string']

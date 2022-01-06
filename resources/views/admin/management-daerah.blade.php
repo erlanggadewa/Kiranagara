@@ -36,7 +36,7 @@
                     Jumlah Penduduk
                   </th>
                   <th scope="col"
-                    class=" px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
+                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase ">
                     Luas Daerah
                   </th>
                   <th scope="col"
@@ -132,7 +132,7 @@
     </div>
   </div>
   <div class="mt-5">
-    {!! $regions->links() !!}
+    {!! $regions->onEachSide(0)->links() !!}
   </div>
 
 @else

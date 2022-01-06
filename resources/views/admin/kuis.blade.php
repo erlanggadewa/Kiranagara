@@ -59,7 +59,7 @@
               </p>
             </div>
             <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-              <img id="preview-img-kuis" class="h-full">
+              <img id="preview-img-kuis" class="object-cover h-full">
             </div>
             <input id="img-kuis" name="img-file" type="file" accept="image/*" class="hidden">
           </label>

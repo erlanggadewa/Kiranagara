@@ -39,12 +39,12 @@
     </div>
 
     <div class="grid justify-center px-5 py-10 mt-10 rounded-md shadow-md bg-tertiary">
-      <h1 class=" mb-10 text-xl font-bold text-center">Diagram Konten</h1>
+      <h1 class="mb-10 text-xl font-bold text-center ">Diagram Konten</h1>
       <div class="md:hidden w-[280px] sm:w-80 ">
-        <canvas id="diagram-doughnut" class="  cursor-pointer "></canvas>
+        <canvas id="diagram-doughnut" class="cursor-pointer "></canvas>
       </div>
       <div class="hidden md:block md:w-[500px] lg:w-[800px]">
-        <canvas id="diagram-bar" class=" cursor-pointer"></canvas>
+        <canvas id="diagram-bar" class="cursor-pointer "></canvas>
       </div>
     </div>
 

@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
    */
   public function run()
   {
-    Quiz::factory(300)->create();
+    Quiz::factory(150)->create();
   }
 }

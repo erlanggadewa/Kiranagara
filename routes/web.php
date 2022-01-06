@@ -4,6 +4,7 @@ use App\Models\CulturalData;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\CulturalDataController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'check.role:admin,user'])->group(function () {
   Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard-user');
 
   Route::get('/quiz/answer/{id}/{userAnswers}', 'App\Http\Controllers\QuizController@getAnswer')->name('get-answer');
+
   Route::get('/quiz/{level}', [QuizController::class, 'index'])->name('quiz-user');
 
   Route::get('/budaya/{id}', [CulturalDataController::class, 'index'])->name('budaya-user');
@@ -36,7 +38,8 @@ Route::middleware(['auth', 'check.role:admin'])->prefix('admin')->group(function
 
   Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard-admin');
 
-
+  Route::post("/crop-profile", [AdminProfileController::class, 'crop'])->name('crop-profile');
+  Route::get("/profile", [AdminProfileController::class, 'index'])->name('profile-admin');
 
   Route::get('/budaya', [CulturalDataController::class, 'create'])->name('budaya-admin');
 

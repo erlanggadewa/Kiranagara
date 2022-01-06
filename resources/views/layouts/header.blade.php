@@ -12,10 +12,13 @@
       </defs>
     </svg>
     {{-- burger bar --}}
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current md:hidden text-primary" fill="none"
-      viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
-    </svg>
+    @if (!request()->routeIs('quiz-user'))
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-current md:hidden text-primary" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+      </svg>
+    @endif
+
     {{-- burger bar --}}
 
     <h1 class="w-full text-2xl font-black tracking-wider text-center md:text-3xl md:text-left text-primary">KIRANAGARA

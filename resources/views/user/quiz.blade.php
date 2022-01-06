@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <div class="w-full gap-0 px-9 pb-28 grid justify-center">
+  <div class="w-full gap-0 px-2 md:px-9 pb-28 grid justify-center">
     @php
       $no = 1;
       $radio = 1;
@@ -86,7 +86,7 @@
           <h1 class="bg-tertiary font-semibold border ring border-secondary p-4 rounded-md mb-4  text-justify">
             {{ $item->question }}
           </h1>
-          <form id="{{ $radio }}" class="form-answer">
+          <form id="{{ $item->id }}" class="form-answer">
             <!-- opsi 1 -->
             <label class="label-answer" for="radio{{ $radio }}">
               <input value="A" id="radio{{ $radio++ }}" type="radio" name="radio" class="hidden answer" />
@@ -183,6 +183,13 @@
       </div>
     </div>
 
+  </div>
+
+  <div id="mark-wrapper" style="display: " class="flex justify-center items-center fixed inset-0 glassmorphism">
+    <div class="relative bg-white rounded-xl w-4/5 h-4/5 flex justify-center items-center">
+      <div class="w-20 h-20 bg-slate-300 top-0 absolute rounded-bl-md rounded-tr-xl right-0">x</div>
+      <img src="{{ asset('img/100.png') }}" alt="mark" class="sm:max-w-lg">
+    </div>
   </div>
 </x-app-layout>
 <script src="{{ asset('js/quiz.js') }}"></script>

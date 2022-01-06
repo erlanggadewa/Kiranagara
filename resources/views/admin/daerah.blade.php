@@ -8,7 +8,7 @@
   <form action="{{ route('daerah-admin.store') }}" method="post" enctype="multipart/form">
     @csrf
     <div class="px-6 py-4 border rounded-lg shadow-lg bg-tertiary border-secondary">
-      <div class="gap-8  lg:flex">
+      <div class="gap-8 lg:flex">
         <div class="basis-1/2">
           <div class="mt-0">
             <x-input-basic label="Nama Daerah" name="name" placeholder="Nama Daerah"></x-input-basic>
@@ -78,7 +78,7 @@
                 </p>
               </div>
               <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-                <img id="preview-img-daerah" class="h-full">
+                <img id="preview-img-daerah" class="object-cover h-full">
               </div>
               <input id="img-name-daerah" type="hidden" value="no-img.png" name="img">
               <input id="img-daerah" name="img-file" type="file" accept="image/*" class="hidden">

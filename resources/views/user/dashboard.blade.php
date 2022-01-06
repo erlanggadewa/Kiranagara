@@ -3,18 +3,6 @@
   {{-- Hero Section --}}
   <div class="w-full bg-white ">
 
-    {{-- <div class="flex px-6 my-4 sm:py-2 sm:my-0" id="home">
-      <input type="text" aria-label="What do you want to learn?" placeholder="What do you want to learn?"
-        class="w-full py-0 pl-3 text-sm text-black placeholder-gray-500 bg-gray-100 border-2 border-gray-200 rounded-md sm:pl-10 focus:border-0 focus:border-light-blue-500 focus:outline-none focus:ring-2 focus:ring-light-blue-500" />
-      <button type="button"
-        class="px-2 ml-2 text-sm text-green-500 transition duration-500 border-2 border-green-500 rounded-md select-none sm:px-4 sm:py-2 sm:ml-10 ease sm:text-base hover:text-white hover:bg-green-600 focus:outline-none focus:shadow-outline">
-        Masuk
-      </button>
-      <button type="button"
-        class="px-2 py-1 ml-2 text-sm text-blue-500 transition duration-500 border-2 border-blue-500 rounded-md select-none sm:px-4 sm:py-2 sm:mx-4 sm:text-base ease hover:text-white hover:bg-blue-600 focus:outline-none focus:shadow-outline">
-        <span>Daftar</span>
-      </button>
-    </div> --}}
     <div class=" sm:mt-5">
       <div class="items-center hidden gap-10 lg:gap-40 md:flex jumbotron">
         <div class="">
@@ -147,21 +135,22 @@
         </div>
       </a>
 
-      <a href="/kuis/medium">
+      <a href="{{ route('quiz-user', 'medium') }}">
         <div class="medium h-20  rounded-3xl flex items-center">
           <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
           <span class="ml-5 text-lg sm:text-2xl text-white">Medium</span>
         </div>
       </a>
 
-      <a href="/kuis/hard">
+      <a href="{{ route('quiz-user', 'hard') }}">
+
         <div class="hard h-20  rounded-3xl flex items-center">
           <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
           <span class="ml-5 text-lg sm:text-2xl text-white">Hard</span>
         </div>
       </a>
 
-      <a href="/kuis/expert">
+      <a href="{{ route('quiz-user', 'expert') }}">
         <div class="expert h-20  rounded-3xl flex items-center">
           <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
           <span class="ml-5 text-lg sm:text-2xl text-white">Expert</span>

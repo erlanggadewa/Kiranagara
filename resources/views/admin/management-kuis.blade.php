@@ -125,7 +125,7 @@
     </div>
   </div>
   <div class="mt-5">
-    {!! $quizData->links() !!}
+    {{ $quizData->onEachSide(0)->links() }}
   </div>
 @else
   <h1 class="mt-10 text-xl font-bold">Konten Kuis</h1>

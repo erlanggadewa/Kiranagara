@@ -117,22 +117,6 @@
 
   $(document).ready(function() {
 
-    $("#img-kategori-budaya").ijaboCropTool({
-      preview: "#preview-img-kategori",
-      setRatio: 3 / 2,
-      allowedExtensions: ["jpg", "jpeg", "png"],
-      buttonsText: ["CROP", "QUIT"],
-      buttonsColor: ["#0E4542", "#e60033", -15],
-      processUrl: '{{ route('crop-kategori-budaya') }}',
-      withCSRF: ["_token", "{{ csrf_token() }}"],
-      onSuccess: function(message, element, status, name) {
-        alert(message, 'success');
-        $('#img-name-kategori').val(name);
-      },
-      onError: function(message, element, status) {
-        alert(message, 'error');
-      },
-    })
 
     $("#img-data-budaya").ijaboCropTool({
       preview: "#preview-img-budaya",

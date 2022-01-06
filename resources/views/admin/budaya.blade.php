@@ -44,7 +44,7 @@
               </p>
             </div>
             <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-              <img id="preview-img-kategori" class="h-full">
+              <img id="preview-img-kategori" class="object-cover h-full">
             </div>
             <input id="img-kategori-budaya" name="img-file" type="file" accept="image/*" class="hidden">
           </label>
@@ -114,7 +114,7 @@
                   </p>
                 </div>
                 <div id="preview-container" class="absolute inset-0 flex items-center justify-center">
-                  <img id="preview-img-budaya" class="h-full">
+                  <img id="preview-img-budaya" class="object-cover h-full">
                 </div>
                 <input id="img-data-budaya" name="img-file" type="file" accept="image/*" class="hidden">
               </label>

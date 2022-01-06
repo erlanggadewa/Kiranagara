@@ -1,5 +1,9 @@
 /node_modules
 /public/hot
+/public/img/budaya/*
+/public/img/daerah
+/public/img/kuis
+/public/img/profile
 /public/storage
 /storage/*.key
 /vendor

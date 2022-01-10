@@ -50,7 +50,7 @@
           </label>
         </div>
 
-        <x-button type="submit" class="mt-6">Submit</x-button>
+        <x-button type="submit" class="mt-6 bg-green-800 hover:bg-green-900 hover:border-green-900">Submit</x-button>
       </form>
     </div>
 
@@ -133,7 +133,8 @@
               </div>
             </div>
           </div>
-          <x-button type="submit" class="mt-6 col-span-full">Submit</x-button>
+          <x-button type="submit" class="mt-6 bg-green-800 col-span-full hover:bg-green-900 hover:border-green-900">
+            Submit</x-button>
         </div>
 
       </form>

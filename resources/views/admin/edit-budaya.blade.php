@@ -96,7 +96,7 @@
         <div class="flex gap-6 col-span-full">
 
           <x-button type="reset" class="mt-6 bg-red-800 hover:bg-red-900 hover:border-red-900 ">Reset</x-button>
-          <x-button type="submit" class="mt-6 ">Edit</x-button>
+          <x-button type="submit" class="mt-6 bg-green-800 hover:bg-green-900 hover:border-green-900">Edit</x-button>
         </div>
       </div>
 

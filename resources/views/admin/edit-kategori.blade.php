@@ -58,7 +58,7 @@
         </div>
 
         <x-button type="reset" class="mt-10 bg-red-800 hover:bg-red-900 hover:border-red-900">Reset</x-button>
-        <x-button type="submit" class="mt-3">Edit</x-button>
+        <x-button type="submit" class="mt-3 bg-green-800 hover:bg-green-900 hover:border-green-900">Edit</x-button>
       </form>
     </div>
   </div>

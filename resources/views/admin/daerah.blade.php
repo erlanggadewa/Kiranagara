@@ -84,7 +84,7 @@
               <input id="img-daerah" name="img-file" type="file" accept="image/*" class="hidden">
             </label>
           </div>
-          <x-button type="submit" class="mt-7">Submit</x-button>
+          <x-button type="submit" class="bg-green-800 mt-7 hover:bg-green-900 hover:border-green-900">Submit</x-button>
         </div>
       </div>
 

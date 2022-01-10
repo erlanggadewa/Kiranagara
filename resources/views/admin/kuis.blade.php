@@ -111,7 +111,8 @@
               value="d">
           </div>
         </div>
-        <x-button class="mt-4 xl:mt-11" type="submit">Submit</x-button>
+        <x-button class="mt-4 bg-green-800 xl:mt-11 hover:bg-green-900 hover:border-green-900" type="submit ">Submit
+        </x-button>
       </div>
     </div>
   </form>

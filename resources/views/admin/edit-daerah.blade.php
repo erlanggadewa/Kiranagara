@@ -95,11 +95,11 @@
             </label>
           </div>
           <button
-            class="flex items-center justify-center w-full h-12 mt-6 font-semibold text-center text-white duration-200 bg-red-600 border-2 rounded-lg cursor-pointer hover:bg-red-700 hover:text-white hover:border-red-700"
+            class="flex items-center justify-center w-full h-12 mt-6 font-semibold text-center text-white duration-200 bg-red-800 border-2 rounded-lg cursor-pointer hover:bg-red-900 hover:text-white hover:border-red-900"
             type="reset">
             Reset
           </button>
-          <x-button type="submit" class="mt-6 ">Edit</x-button>
+          <x-button type="submit" class="mt-6 bg-green-800 hover:bg-green-900 hover:border-green-900 ">Edit</x-button>
         </div>
       </div>
 

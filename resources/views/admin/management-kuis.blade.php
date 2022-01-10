@@ -65,7 +65,7 @@
                       <div class="text-sm text-gray-900">{!! $item->question !!}</div>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 text-center whitespace-nowrap">
                       {{-- delete --}}
                       <form id="form-delete-kuis-{{ $item->id }}" class="inline-block"
                         action="{{ route('kuis-admin.destroy', $item) }}" method="POST">

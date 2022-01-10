@@ -141,7 +141,9 @@
 
           <x-button type="reset" class="col-span-1 mt-6 bg-red-800 hover:bg-red-900 hover:border-red-900 md:mt-4">
             Reset</x-button>
-          <x-button type="submit" class="col-span-1 mt-3 mb-6 md:mt-4">Update</x-button>
+          <x-button type="submit"
+            class="col-span-1 mt-3 mb-6 bg-green-800 md:mt-4 hover:bg-green-900 hover:border-green-900">Update
+          </x-button>
         </div>
       </div>
     </form>

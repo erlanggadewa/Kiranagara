@@ -14,42 +14,42 @@ class ProfileController extends Controller
     $avgEasy = QuizScore::where([
       ["level", "=", "easy"],
       ["user_id", "=", Auth::user()->id]
-    ])->avg("score");
+    ])->pluck("score")->avg();
 
     $avgMedium = QuizScore::where([
       ["level", "=", "medium"],
       ["user_id", "=", Auth::user()->id]
-    ])->avg("score");
+    ])->pluck("score")->avg();
 
     $avgHard = QuizScore::where([
       ["level", "=", "hard"],
       ["user_id", "=", Auth::user()->id]
-    ])->avg("score");
+    ])->pluck("score")->avg();
 
     $avgExpert = QuizScore::where([
       ["level", "=", "expert"],
       ["user_id", "=", Auth::user()->id]
-    ])->avg("score");
+    ])->pluck("score")->avg();
 
     $highestEasy = QuizScore::where([
       ["level", "=", "easy"],
       ["user_id", "=", Auth::user()->id]
-    ])->max("score");
+    ])->pluck("score")->max();
 
     $highestMedium = QuizScore::where([
       ["level", "=", "medium"],
       ["user_id", "=", Auth::user()->id]
-    ])->max("score");
+    ])->pluck("score")->max();
 
     $highestHard = QuizScore::where([
       ["level", "=", "hard"],
       ["user_id", "=", Auth::user()->id]
-    ])->max("score");
+    ])->pluck("score")->max();
 
     $highestExpert = QuizScore::where([
       ["level", "=", "expert"],
       ["user_id", "=", Auth::user()->id]
-    ])->max("score");
+    ])->pluck("score")->max();
 
     return view(
       'components.tasks.detail-profile',

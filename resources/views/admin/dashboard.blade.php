@@ -48,6 +48,7 @@
       </div>
     </div>
 
+    <x-management-kategori></x-management-kategori>
     <x-management-budaya></x-management-budaya>
     <x-management-daerah></x-management-daerah>
     <x-management-kuis></x-management-kuis>

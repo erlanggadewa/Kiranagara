@@ -41,24 +41,24 @@
     @apply w-8 -ml-3 fill-current text-primary;
   }
   .label-answer {
-    @apply hover:bg-slate-100 flex items-center p-2 mb-1 duration-100 cursor-pointer  rounded-xl;
+    @apply flex items-center p-2 mb-1 duration-100 cursor-pointer hover:bg-slate-100 rounded-xl;
   }
   .number-quiz {
-    @apply w-12 justify-center items-center text-white flex align-middle h-12 bg-slate-600 absolute top-0 left-1/2 md:left-0 md:-translate-x-1/3 md:-translate-y-1/3 -translate-x-1/2 -translate-y-1/2 rounded-3xl;
+    @apply absolute top-0 flex items-center justify-center w-12 h-12 text-white align-middle -translate-x-1/2 -translate-y-1/2 bg-slate-600 left-1/2 md:left-0 md:-translate-x-1/3 md:-translate-y-1/3 rounded-3xl;
   }
   .wrapper-quiz {
-    @apply select-none relative flex flex-col justify-center flex-grow-0 max-w-4xl gap-6  p-3 mt-14 duration-300 rounded-lg  sm:items-center md:flex-row md:hover:transform md:hover:scale-105 md:p-10 hover:ring-4 hover:shadow-2xl;
+    @apply relative flex flex-col justify-center flex-grow-0 max-w-4xl gap-6 p-3 duration-300 rounded-lg select-none mt-14 sm:items-center md:flex-row md:hover:transform md:hover:scale-105 md:p-10 hover:shadow-2xl;
   }
   .text-percent {
-    @apply p-3 w-12 h-8 shadow-md flex items-center justify-center  rounded-xl  text-base font-bold;
+    @apply flex items-center justify-center w-12 h-8 p-3 text-base font-bold shadow-md rounded-xl;
   }
 
   .progress-inactive {
-    @apply shadow-md flex h-2 mb-4 overflow-hidden text-xs rounded;
+    @apply flex h-2 overflow-hidden text-xs rounded shadow-md;
   }
 
   .progress-active {
-    @apply flex flex-col justify-center text-center text-white shadow-none  whitespace-nowrap;
+    @apply flex flex-col justify-center text-center text-white shadow-none whitespace-nowrap;
   }
 
   .progress-title {
@@ -114,4 +114,7 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.6px);
   -webkit-backdrop-filter: blur(5.6px);
+}
+html {
+  scroll-behavior: smooth;
 }

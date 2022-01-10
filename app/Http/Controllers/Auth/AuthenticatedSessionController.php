@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
   {
 
     $data = $request->validate([
-      'name' => ['required', 'string', 'max:255', 'unique:users,name,' . Auth::user()->id],
+      'name' => ['required', 'string', 'max:255',],
       'img' =>  ['required', 'string', 'max:255'],
       'password' => ['required', Password::defaults(), 'confirmed'],
     ]);

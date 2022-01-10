@@ -66,13 +66,13 @@
                         </div>
                       </div>
                     </td>
-                    <td class="px-6 py-4 whitespace-wrap">
+                    <td class="px-6 py-4 text-center whitespace-wrap">
                       <div class="text-sm text-gray-900">{{ number_format($item->population) . ' Juta Jiwa' }}</div>
                     </td>
-                    <td class="px-6 py-4 whitespace-wrap">
+                    <td class="px-6 py-4 text-center whitespace-wrap">
                       <div class="text-sm text-gray-900">{{ number_format($item->size_area) }} km<sup>2</sup></div>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
+                    <td class="px-6 py-4 text-center whitespace-nowrap">
                       {{-- delete --}}
                       <form id="form-delete-daerah-{{ $item->id }}" class="inline-block"
                         action="{{ route('daerah-admin.destroy', $item) }}" method="POST">

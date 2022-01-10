@@ -1,7 +1,7 @@
 <x-app-layout>
   @include('layouts.header')
 
-  <div class="flex gap-10 p-5">
+  <div class="flex p-5 md:gap-5">
     @if (!request()->routeIs('quiz-user'))
       @include('layouts.navigation-user')
     @endif

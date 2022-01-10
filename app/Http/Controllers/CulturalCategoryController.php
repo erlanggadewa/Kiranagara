@@ -33,8 +33,11 @@ class CulturalCategoryController extends Controller
       'img' =>  ['required', 'string', 'max:255']
     ]);
 
-    CulturalCategory::create($culturalCategory);
-    return redirect()->route('budaya-admin')->withToastSuccess('Data Berhasil Ditambah!');
+    $status = CulturalCategory::create($culturalCategory);
+    if ($status) {
+      return redirect()->route('budaya-admin')->withToastSuccess('Data Berhasil Ditambah!');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Ditambah');
   }
 
   /**
@@ -43,8 +46,15 @@ class CulturalCategoryController extends Controller
    * @param  \App\Models\CulturalCategory  $culturalCategory
    * @return \Illuminate\Http\Response
    */
-  public function show(CulturalCategory $culturalCategory)
+  public function show(CulturalCategory $culturalCategory, Request $request)
   {
+    $selectedData = CulturalCategory::where('id', '=', $request->id)->get()[0];
+    return view(
+      'admin.detail-kategori',
+      [
+        "detailData" => $selectedData,
+      ]
+    );
   }
 
   /**
@@ -53,9 +63,15 @@ class CulturalCategoryController extends Controller
    * @param  \App\Models\CulturalCategory  $culturalCategory
    * @return \Illuminate\Http\Response
    */
-  public function edit(CulturalCategory $culturalCategory)
+  public function edit(CulturalCategory $culturalCategory, Request $request)
   {
-    //
+    $selectedData = CulturalCategory::where('id', '=', $request->id)->get()[0];
+    return view(
+      'admin.edit-kategori',
+      [
+        "selectedData" => $selectedData,
+      ]
+    );
   }
 
   /**
@@ -65,9 +81,18 @@ class CulturalCategoryController extends Controller
    * @param  \App\Models\CulturalCategory  $culturalCategory
    * @return \Illuminate\Http\Response
    */
-  public function update(UpdateCulturalCategoryRequest $request, CulturalCategory $culturalCategory)
+  public function update(UpdateCulturalCategoryRequest $request, CulturalCategory $culturalCategory,)
   {
-    //
+    $data = $request->validate([
+      'name' => ['required', 'string', 'max:255', 'unique:cultural_data,name,' . $request->id],
+      'img' =>  ['required', 'string', 'max:255'],
+    ]);
+
+    $status = CulturalCategory::where("id", "=", $request->id)->update($data);
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Diupdate');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Diupdate');
   }
 
   /**
@@ -76,10 +101,15 @@ class CulturalCategoryController extends Controller
    * @param  \App\Models\CulturalCategory  $culturalCategory
    * @return \Illuminate\Http\Response
    */
-  public function destroy(CulturalCategory $culturalCategory)
+  public function destroy(CulturalCategory $culturalCategory, Request $request)
   {
-    //
+    $status = CulturalCategory::where('id', '=', $request->id)->delete();
+    if ($status) {
+      return redirect()->back()->withToastSuccess('Data Berhasil Dihapus');
+    }
+    return redirect()->back()->withToast('toast_error', 'Data Gagal Dihapus');
   }
+
   function crop(Request $request)
   {
 

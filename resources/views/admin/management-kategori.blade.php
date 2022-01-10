@@ -1,8 +1,8 @@
-<!-- Konten Budaya -->
-@if ($dataBudaya->count())
+<!-- Konten kategori -->
+@if ($dataKategori->count())
 
   <div>
-    <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>
+    <h1 class="mt-10 text-xl font-bold">Konten Kategori</h1>
     <hr class="mt-2 mb-4 border-2 shadow-sm border-tertiary bg-tertiary">
     <div class="flex justify-end ">
       <div
@@ -30,11 +30,7 @@
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                    Judul
-                  </th>
-                  <th scope="col"
-                    class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
-                    Kategori
+                    Judul Kategori
                   </th>
                   <th scope="col"
                     class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
@@ -44,9 +40,9 @@
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
                 @php
-                  $no = $dataBudaya->firstItem();
+                  $no = $dataKategori->firstItem();
                 @endphp
-                @foreach ($dataBudaya as $culturalData)
+                @foreach ($dataKategori as $culturalCategory)
                   <tr>
                     <td class="px-6 py-4 whitespace-wrap">
                       <div class="flex items-center justify-center">
@@ -58,22 +54,20 @@
                     <td class="px-6 py-4 whitespace-wrap">
                       <div class="flex items-center">
                         <div class="text-sm font-medium text-gray-900">
-                          {{ $culturalData->name }}
+                          {{ $culturalCategory->name }}
                         </div>
                       </div>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-wrap">
-                      <div class="text-sm text-center text-gray-900">{{ $culturalData->culturalCategory->name }}</div>
-                    </td>
+
                     {{-- action --}}
-                    <td class="px-6 py-4 text-center whitespace-nowrap">
-                      <form id="form-delete-budaya-{{ $culturalData->id }}" class="inline-block"
-                        action="{{ route('data-budaya.destroy', $culturalData) }}" method="POST">
+                    <td class="flex justify-center gap-2 px-6 py-4 whitespace-nowrap">
+                      <form id="form-delete-budaya-{{ $culturalCategory->id }}" class="inline-block"
+                        action="{{ route('kategori-budaya.destroy', $culturalCategory) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
-                        <div class="cursor-pointer" onclick="confirmDeleteCulture({{ $culturalData->id }})">
+                        <input type="hidden" name="id" value="{{ $culturalCategory->id }}">
+                        <div class="cursor-pointer" onclick="confirmDeleteCulture({{ $culturalCategory->id }})">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-md">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
@@ -85,10 +79,9 @@
                         </div>
 
                       </form>
-
-                      <form class="inline-block" action="{{ route('data-budaya.edit', $culturalData->id) }}"
+                      <form class="inline-block" action="{{ route('kategori-budaya.edit', $culturalCategory->id) }}"
                         method="GET">
-                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
+                        <input type="hidden" name="id" value="{{ $culturalCategory->id }}">
                         <button type="submit">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-blue-800 bg-blue-100 rounded-md">
@@ -101,9 +94,9 @@
                         </button>
                       </form>
 
-                      <form class="inline-block" action="{{ route('data-budaya.show', $culturalData->id) }}"
+                      <form class="inline-block" action="{{ route('kategori-budaya.show', $culturalCategory->id) }}"
                         method="GET">
-                        <input type="hidden" name="id" value="{{ $culturalData->id }}">
+                        <input type="hidden" name="id" value="{{ $culturalCategory->id }}">
                         <button type="submit">
                           <span
                             class="inline-flex p-2 px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-md">
@@ -129,7 +122,7 @@
     </div>
   </div>
   <div class="mt-5">
-    {!! $dataBudaya->onEachSide(0)->links() !!}
+    {!! $dataKategori->onEachSide(0)->links() !!}
   </div>
 @else
   <h1 class="mt-10 text-xl font-bold">Konten Budaya</h1>
@@ -141,7 +134,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
           d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
       </svg>
-      <label>Data Budaya Kosong!</label>
+      <label>Data kategori Budaya Kosong!</label>
     </div>
   </div>
 @endif

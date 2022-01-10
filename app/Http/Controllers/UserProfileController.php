@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class AdminProfileController extends Controller
+class UserProfileController extends Controller
 {
   public function index()
   {

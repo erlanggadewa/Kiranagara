@@ -1,15 +1,15 @@
 <x-user-layout>
 
   {{-- Hero Section --}}
-  <div class="w-full bg-white ">
+  <div id="landing-page" class="w-full bg-white ">
 
     <div class=" sm:mt-5">
       <div class="items-center hidden gap-10 lg:gap-40 md:flex jumbotron">
         <div class="">
-          <h1 class="hidden text-3xl font-medium text-green-800 uppercase md:block">
+          <h1 class="hidden text-3xl font-semibold text-green-800 uppercase md:block">
             Kiranagara
           </h1>
-          <p class="text-base font-medium text-justify indent-14 mt-7 md:text-sm">
+          <p class="text-base font-medium text-justify indent-14 mt-7 md:text-base">
             Kiranagara merupakan sebuah platform belajar online gratis yang
             membahas mengenai kebudayaan yang ada di Indonesia. Kirana berasal
             dari bahasa sastra Indonesia yang berarti cantik dan Nagara berarti
@@ -31,10 +31,10 @@
         </div>
 
         <div class="flex flex-col items-end p-4 sm:mt-6 lg:mt-0 lg:p-0 lg:text-right lg:w-4/5 lg:ml-16">
-          <h1 class="text-lg font-medium text-green-800 lg:text-2xl lg:mb-5">
+          <h1 class="mb-5 text-xl font-semibold text-green-800 lg:text-2xl">
             Hallo, Kiraners
           </h1>
-          <p class="mt-2 text-sm font-medium text-justify sm:mt-0">
+          <p class="mt-2 text-sm font-medium text-justify md:text-base sm:mt-0">
             Indonesia merupakan negara yang begitu indah dan menyimpan banyak
             kekayaan di dalamnya. Keanekaragaman yang ada di Indonesia menjadi
             salah satu ciri khas sebagai negara yang unik, tetapi keanekaragaman
@@ -51,9 +51,9 @@
   </div>
 
   {{-- Budaya --}}
-  <div class="mt-14">
+  <div class="mt-14" id="culture">
     <h1 class="mt-6 text-lg font-bold uppercase md:text-xl text-primary">BUDAYA</h1>
-    <hr class="mt-2 border-2 bg-green-800 border-green-800 w-1/2" />
+    <hr class="w-1/2 mt-2 bg-green-800 border-2 border-green-800" />
 
     @if ($cultureCategories->count())
       <div class="flex gap-5 px-4 py-8 overflow-x-auto md:px-5 snap-x">
@@ -72,7 +72,7 @@
         @endforeach
       </div>
     @else
-      <div class="alert alert-error mt-5">
+      <div class="mt-5 alert alert-error">
         <div class="flex-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -87,9 +87,9 @@
   </div>
 
   {{-- Daerah --}}
-  <div>
+  <div id="region">
     <h1 class="mt-6 text-lg font-bold uppercase md:text-xl text-primary">Daerah</h1>
-    <hr class="mt-2 border-2 bg-green-800 border-green-800 w-1/2" />
+    <hr class="w-1/2 mt-2 bg-green-800 border-2 border-green-800" />
 
 
     @if ($regions->count())
@@ -108,7 +108,7 @@
         @endforeach
       </div>
     @else
-      <div class="alert alert-error mt-5">
+      <div class="mt-5 alert alert-error">
         <div class="flex-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -124,39 +124,52 @@
   </div>
 
   {{-- Kuis --}}
-  <div class="kuis mt-10 sm:mt-10" id="kuis">
+  <div class="mt-10 kuis sm:mt-10" id="quiz">
     <h1 class="mt-6 text-lg font-bold uppercase md:text-xl text-primary">Kuis</h1>
-    <hr class="mt-2 border-2 bg-green-800 border-green-800 w-1/2" />
-    <div class="mt-6 grid md:grid-cols-2 w-full gap-7 overflow-x-auto pb-3">
-      <a href="{{ route('quiz-user', 'easy') }}">
-        <div class="easy h-20  rounded-3xl flex items-center">
-          <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
-          <span class="ml-5 text-lg sm:text-2xl text-white">Easy</span>
-        </div>
-      </a>
+    <hr class="w-1/2 mt-2 bg-green-800 border-2 border-green-800" />
+    <div class="grid w-full pb-3 mt-6 overflow-x-auto md:grid-cols-2 gap-7">
+      <button onclick="confirmQuiz('{{ route('quiz-user', 'easy') }}')"
+        class="flex items-center h-20 easy rounded-3xl">
+        <img src="{{ asset('img/star_kuis.png') }}" alt="" class="w-10 ml-10 aspect-square" />
+        <span class="ml-5 text-lg text-white sm:text-2xl">Easy</span>
+      </button>
 
-      <a href="{{ route('quiz-user', 'medium') }}">
-        <div class="medium h-20  rounded-3xl flex items-center">
-          <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
-          <span class="ml-5 text-lg sm:text-2xl text-white">Medium</span>
-        </div>
-      </a>
+      <button onclick="confirmQuiz('{{ route('quiz-user', 'medium') }}')"
+        class="flex items-center h-20 medium rounded-3xl">
+        <img src="{{ asset('img/star_kuis.png') }}" alt="" class="w-10 ml-10 aspect-square" />
+        <span class="ml-5 text-lg text-white sm:text-2xl">Medium</span>
+      </button>
 
-      <a href="{{ route('quiz-user', 'hard') }}">
 
-        <div class="hard h-20  rounded-3xl flex items-center">
-          <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
-          <span class="ml-5 text-lg sm:text-2xl text-white">Hard</span>
-        </div>
-      </a>
+      <button onclick="confirmQuiz('{{ route('quiz-user', 'hard') }}')"
+        class="flex items-center h-20 hard rounded-3xl">
+        <img src="{{ asset('img/star_kuis.png') }}" alt="" class="w-10 ml-10 aspect-square" />
+        <span class="ml-5 text-lg text-white sm:text-2xl">Hard</span>
+      </button>
 
-      <a href="{{ route('quiz-user', 'expert') }}">
-        <div class="expert h-20  rounded-3xl flex items-center">
-          <img src="{{ asset('img/star_kuis.png') }}" alt="" class="aspect-square w-10 ml-10" />
-          <span class="ml-5 text-lg sm:text-2xl text-white">Expert</span>
-        </div>
-      </a>
+      <div onclick="confirmQuiz('{{ route('quiz-user', 'expert') }}')"
+        class="flex items-center h-20 expert rounded-3xl">
+        <img src="{{ asset('img/star_kuis.png') }}" alt="" class="w-10 ml-10 aspect-square" />
+        <span class="ml-5 text-lg text-white sm:text-2xl">Expert</span>
+      </div>
     </div>
   </div>
 
 </x-user-layout>
+<script>
+  function confirmQuiz(url) {
+    Swal.fire({
+      title: 'Yakin ingin mengerjakan kuis?',
+      // text: "Kamu tidak akan dapat !",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = url;
+      }
+    })
+  }
+</script>

@@ -49,7 +49,7 @@
     </x-checkbox>
 
     <div class="mt-8 ">
-      <x-button type="submit">
+      <x-button type="submit" class="bg-green-800 hover:bg-green-900 hover:border-green-900">
         LOGIN
       </x-button>
     </div>

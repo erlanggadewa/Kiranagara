@@ -280,7 +280,7 @@
         </x-input-icon>
       </div>
     </div>
-    <x-button type="submit" class="mt-8">
+    <x-button type="submit" class="mt-8 bg-green-800 hover:bg-green-900 hover:border-green-900">
       REGISTER
     </x-button>
 

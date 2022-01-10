@@ -18,7 +18,7 @@
         Kirana berasal dari bahasa sastra Indonesia yang berarti cantik dan Nagara berarti Negara.
       </p>
       <div class="md:hidden" x-on:click="openLogin = true">
-        <x-button type="submit">
+        <x-button type="submit" class="bg-green-800 hover:bg-green-900 hover:border-green-900">
           NEXT
         </x-button>
       </div>

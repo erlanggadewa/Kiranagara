@@ -11,14 +11,46 @@ class ProfileController extends Controller
 {
   public function index()
   {
-    $avgEasy = QuizScore::where("level", "=", "easy")->where("user_id", "=", Auth::user()->id)->avg("score");
-    $avgMedium = QuizScore::where("level", "=", "medium")->where("user_id", "=", Auth::user()->id)->avg("score");
-    $avgHard = QuizScore::where("level", "=", "hard")->where("user_id", "=", Auth::user()->id)->avg("score");
-    $avgExpert = QuizScore::where("level", "=", "expert")->where("user_id", "=", Auth::user()->id)->avg("score");
-    $highestEasy = QuizScore::where("level", "=", "easy")->where("user_id", "=", Auth::user()->id)->max("score");
-    $highestMedium = QuizScore::where("level", "=", "medium")->where("user_id", "=", Auth::user()->id)->max("score");
-    $highestHard = QuizScore::where("level", "=", "hard")->where("user_id", "=", Auth::user()->id)->max("score");
-    $highestExpert = QuizScore::where("level", "=", "expert")->where("user_id", "=", Auth::user()->id)->max("score");
+    $avgEasy = QuizScore::where([
+      ["level", "=", "easy"],
+      ["user_id", "=", Auth::user()->id]
+    ])->avg("score");
+
+    $avgMedium = QuizScore::where([
+      ["level", "=", "medium"],
+      ["user_id", "=", Auth::user()->id]
+    ])->avg("score");
+
+    $avgHard = QuizScore::where([
+      ["level", "=", "hard"],
+      ["user_id", "=", Auth::user()->id]
+    ])->avg("score");
+
+    $avgExpert = QuizScore::where([
+      ["level", "=", "expert"],
+      ["user_id", "=", Auth::user()->id]
+    ])->avg("score");
+
+    $highestEasy = QuizScore::where([
+      ["level", "=", "easy"],
+      ["user_id", "=", Auth::user()->id]
+    ])->max("score");
+
+    $highestMedium = QuizScore::where([
+      ["level", "=", "medium"],
+      ["user_id", "=", Auth::user()->id]
+    ])->max("score");
+
+    $highestHard = QuizScore::where([
+      ["level", "=", "hard"],
+      ["user_id", "=", Auth::user()->id]
+    ])->max("score");
+
+    $highestExpert = QuizScore::where([
+      ["level", "=", "expert"],
+      ["user_id", "=", Auth::user()->id]
+    ])->max("score");
+
     return view(
       'components.tasks.detail-profile',
       [

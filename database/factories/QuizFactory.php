@@ -19,7 +19,7 @@ class QuizFactory extends Factory
   public function definition()
   {
     return [
-      'level' => Arr::random(['easy', 'medium', 'hard', 'expert']),
+      'level' => Arr::random(['easy']),
       'question' => $this->faker->paragraph(),
       'option_1' => $this->faker->sentence(),
       'option_2' => $this->faker->sentence(),

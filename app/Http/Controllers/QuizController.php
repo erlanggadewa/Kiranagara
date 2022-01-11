@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Routing\Controller;
@@ -17,7 +18,7 @@ class QuizController extends Controller
   {
 
     $answer = Quiz::where('id', '=', $id)->select('correct_option')->get();
-    if ($answer[0]->correct_option == $userAnswers) {
+    if ($answer[0]->correct_option == Str::lower($userAnswers)) {
       return response()->json(true);
     }
     return response()->json(false);;

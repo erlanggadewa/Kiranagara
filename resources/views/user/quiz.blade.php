@@ -83,9 +83,9 @@
 
         <!-- soal dan jawaban -->
         <div class="w-full h-full p-5 mt-6 bg-white rounded-md sm:mt-0">
-          <h1 class="p-4 mb-4 font-semibold text-justify border rounded-md bg-tertiary ring border-secondary">
-            {{ $item->question }}
-          </h1>
+          <div class="p-4 mb-4 font-semibold text-justify border rounded-md bg-tertiary ring border-secondary">
+            {!! $item->question !!}
+          </div>
           <form id="{{ $item->id }}" class="form-answer">
             <!-- opsi 1 -->
             <label class="label-answer" for="radio{{ $radio }}">

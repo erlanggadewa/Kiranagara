@@ -133,7 +133,7 @@
       <img src="{{ asset('img/kiranagara-full.png') }}" alt="logo kiranagara" class="mt-5 mb-10 sm:px-6">
       {{-- Dashboard --}}
       <li class="my-4 bg-white rounded-lg">
-        <a class="focus:bg-secondary" href="#landing-page" class="focus:bg-secondary">
+        <a class="focus:bg-secondary" href="/#landing-page" class="focus:bg-secondary">
           <svg class="ml-4 nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
             viewBox="0 0 460.298 460.297" style="enable-background:new 0 0 512 512" xml:space="preserve">
@@ -157,7 +157,7 @@
 
       {{-- Budaya --}}
       <li class="my-4 bg-white rounded-lg">
-        <a class="focus:bg-secondary" href="#culture">
+        <a class="focus:bg-secondary" href="/#culture">
           <svg class="ml-4 nav-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_496_2)">
               <path
@@ -194,7 +194,7 @@
 
       {{-- Daerah --}}
       <li class="my-4 bg-white rounded-lg">
-        <a class="focus:bg-secondary" href="#regions">
+        <a class="focus:bg-secondary" href="/#regions">
           <svg class="ml-4 nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
             viewBox="0 0 511.99995 511" style="enable-background:new 0 0 512 512" xml:space="preserve"
@@ -227,7 +227,7 @@
 
       {{-- Kuis --}}
       <li class="my-4 bg-white rounded-lg">
-        <a class="focus:bg-secondary" href="#quiz">
+        <a class="focus:bg-secondary" href="/#quiz">
           <svg class="ml-4 nav-icon" xmlns="http://www.w3.org/2000/svg" version="1.1"
             xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0"
             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">

@@ -34,7 +34,7 @@ class RegisteredUserController extends Controller
    */
   public function store(Request $request)
   {
-    $token = env('TOKEN_ADMIN');
+    $token = env('TOKEN_ADMIN', "kiranagara_nayanika");
     $request->validate([
       'name' => ['required', 'string', 'max:255'],
       'role' => ['required', 'string', Rule::in(['admin', 'user'])],

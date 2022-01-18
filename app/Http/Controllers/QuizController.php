@@ -18,7 +18,7 @@ class QuizController extends Controller
   {
 
     $answer = Quiz::where('id', '=', $id)->select('correct_option')->get();
-    if ($answer[0]->correct_option == Str::lower($userAnswers)) {
+    if (Str::lower($answer[0]->correct_option) == Str::lower($userAnswers)) {
       return response()->json(true);
     }
     return response()->json(false);;

@@ -15,7 +15,7 @@
 
 
     </div>
-    <ul tabindex="0" class="w-full p-2 shadow menu dropdown-content bg-base-100 rounded-box">
+    <ul style="z-index: 9999" tabindex="0" class="w-full p-2 shadow-lg menu dropdown-content bg-base-100 rounded-box ">
       <li>
         <a href="{{ route('profile') }}" class="flex items-center justify-center md:justify-start">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">

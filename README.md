@@ -3,6 +3,12 @@
 
 Kiranagara is a free online learning platform that discuss about the culture in Indonesia. Kirana is from Indonesian literature which means beautiful and Nagara means Country. So the meaning of Kiranagara is a beautiful country. Lots hope that with the creation of this e-learning website, one of is to increase the knowledge of the nation's generations about the culture that exists in Indonesia through the development of This technology is web-based
 
+Tech Stack :
+ - Laravel 
+ - TailwindCSS
+ - MySQL
+ - PHP
+ 
 You can watch THE app image :
 https://drive.google.com/file/d/1Eb_E8peGpigwpOOykyJ_hPkxEv8ztK27/view?usp=sharing
 
